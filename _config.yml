@@ -22,8 +22,8 @@ repository               : "academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "666.jpeg"
-  name             : "Jing (Jerry) Yan"
+  avatar           : "666.jpg"
+  name             : "Jing Yan"
   pronouns         : # example: "he/him"  
   bio              : "Ph.D. student in Finance, TempleU."
   location         : "Philadelphia, PA"
