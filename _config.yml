@@ -11,18 +11,17 @@ locale                   : "en-US"
 site_theme               : "default"
 title                    : "Jing (Jerry) Yan"
 title_separator          : "-"
-name                     : &name "Your Name"
+name                     : &name "Jing Yan"
 description              : &description "personal description"
-url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
-baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "academicpages/academicpages.github.io"
+url                      : "https://jingjerryyan.github.io/"
+repository               : "jingjerryyan.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "666.png"
+  avatar           : "profile.png"
   name             : "Jing Yan"
   pronouns         : # example: "he/him"  
   bio              : "Ph.D. student in Finance, TempleU."
