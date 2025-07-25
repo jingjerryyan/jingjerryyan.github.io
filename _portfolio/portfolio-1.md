@@ -1,8 +1,7 @@
----
-title: "My Chinese Name: 徐驰 (Xú Chí)"
-excerpt: "A guide to understanding and pronouncing my Chinese name<br/>"
-collection: portfolio
----
+
+This page offers a brief introduction to my name and story. I go by Clara in the U.S., though I was born and raised in Shanghai. Since my teens, I’ve studied in the U.S. as an international student and have found that my Chinese name is often difficult for non-Mandarin speakers to pronounce. This page serves as a guide to it.
+
+My name
 
 # Surname: 徐 (Xú)
 
