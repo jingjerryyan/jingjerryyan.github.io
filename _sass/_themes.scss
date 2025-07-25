@@ -102,4 +102,20 @@ $vimeo-color                : #1ab7ea;
 $vine-color                 : #00bf8f;
 $youtube-color              : #bb0000;
 $xing-color                 : #006567;
-   
+
+
+
+$background-color: #ffffff;          // 纯白背景（干净清爽）
+$body-background: #fafafa;           // 极浅灰（层次感）
+$primary-color: #3a5f8a;            // 低饱和度蓝（学术感）
+$secondary-color: #6c8ebf;          // 柔和蓝（链接/按钮）
+$accent-color: #d94e67;             // 暗粉红（点缀用）
+
+// 应用到页面元素
+body {
+  background-color: $body-background;
+}
+.page__content {
+  background-color: $background-color; // 内容区纯白
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05); // 轻微阴影增强层次
+}
