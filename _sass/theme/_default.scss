@@ -2,46 +2,52 @@
    DEFAULT THEME
    ========================================================================== */
 
-/* Color codes used for the theme */
-$gray                       : #7a8288;
-$dark-gray                  : mix(#000, $gray, 40%);
-$darker-gray                : mix(#000, $gray, 60%);
-$light-gray                 : #9ba1a6;
-$lighter-gray               : mix(#fff, $gray, 90%);
+/* ========== 中性色阶（低饱和度灰阶） ========== */
+$gray: #6c757d;                    // 主中性灰 (Bootstrap标准灰)
+$dark-gray: #495057;               // 深灰 (标题/重要文本)
+$darker-gray: #343a40;             // 炭黑灰 (导航栏/强调文本)
+$light-gray: #adb5bd;              // 中灰 (辅助信息)
+$lighter-gray: #e9ecef;            // 浅灰 (边框/分隔线)
 
-/* Color codes used for the site */
-$danger-color               : #ee5f5b;
-$info-color                 : #2f7f93;
-$notice-color               : #7a8288;
-$success-color              : #62c462;
-$warning-color              : #f89406;
+/* ========== 功能色（学术严谨感） ========== */
+$danger-color: #dc3545;            // 暗红 (错误提示)
+$info-color: #3a86b8;              // 蓝灰 (信息提示)
+$notice-color: #6c757d;            // 沿用主灰色
+$success-color: #28a745;           // 墨绿 (成功状态)
+$warning-color: #ffc107;           // 琥珀黄 (警告)
 
-/* Other basic settings for the template */
-$border-radius              : 4px;
-$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
-$global-transition          : all 0.2s ease-in-out;
-$masthead-height            : 70px;
-$navicon-width              : 28px;
-$navicon-height             : 4px;
-$sidebar-link-max-width     : 250px;
-$sidebar-screen-min-width   : 1024px;
+/* ========== 视觉参数 ========== */
+$border-radius: 0.25rem;           // 更小的圆角 (4px → 3.75px)
+$box-shadow: 0 1px 3px rgba(0,0,0,0.08); // 更柔和的阴影
+$global-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1); // 平滑缓动
 
-/* Default light theme for the site */
+/* ========== 明亮主题 ========== */
 :root {
-    --global-base-color                 : #{$gray};
-    --global-bg-color                   : #fff;
-    --global-footer-bg-color            : #f2f3f3;
-    --global-border-color               : #{$lighter-gray};
-    --global-dark-border-color          : #bdc1c4;
-    --global-code-background-color      : #fafafa;
-    --global-code-text-color            : #{$darker-gray};
-    --global-fig-caption-color          : mix(#fff,  #{$dark-gray}, 25%);
-    --global-link-color                 : #52adc8;
-    --global-link-color-hover           : mix(#000, #2f7f93, 25%);
-    --global-link-color-visited         : mix(#fff, #2f7f93, 25%);  
-    --global-masthead-link-color        : #{$dark-gray};
-    --global-masthead-link-color-hover  : mix(#000, #{$gray}, 25%);    
-    --global-text-color                 : #{$dark-gray};
-    --global-text-color-light           : #{$light-gray};
-    --global-thead-color                : #{$lighter-gray};
+  /* 基础色 */
+  --global-base-color: #{$gray};
+  --global-bg-color: #f8f9fa;                  // 极浅灰白背景
+  --global-footer-bg-color: #e9ecef;           // 统一浅灰
+
+  /* 边框与分隔 */
+  --global-border-color: #dee2e6;              // 浅灰边框
+  --global-dark-border-color: #ced4da;         // 稍深边框
+
+  /* 代码块 */
+  --global-code-background-color: #ffffff;     // 纯白背景
+  --global-code-text-color: #{$darker-gray};   // 炭黑灰代码文本
+
+  /* 文字 */
+  --global-text-color: #212529;                // 接近纯黑 (正文)
+  --global-text-color-light: #6c757d;          // 辅助文本
+  --global-fig-caption-color: #{$light-gray};  // 图片说明用中灰
+
+  /* 链接 */
+  --global-link-color: #2c3e50;                // 深蓝灰链接
+  --global-link-color-hover: #1a252f;          // 悬停加深
+  --global-link-color-visited: #566573;        // 访问后变灰
+
+  /* 导航栏 */
+  --global-masthead-link-color: #{$dark-gray};
+  --global-masthead-link-color-hover: #212529; // 悬停接近黑色
+  --global-thead-color: #f1f3f5;               // 表格标题浅灰
 }
