@@ -1,7 +1,7 @@
 ---
 layout: archive
 title: "C.V."
-
+permalink: /cv-json/
 author_profile: false
 redirect_from:
   - /resume-json
@@ -25,9 +25,17 @@ redirect_from:
       width: 70%;
     }
   }
+  
+  
 </style>
 
 {% include cv-template.html %}
+
+
+<div class="cv-container">
+  <embed src="{{ base_path }}/files/cv.pdf" type="application/pdf" width="100%" height="800px">
+</div>
+
 
 <div class="cv-download-links">
   <a href="{{ base_path }}/files/cv.pdf" class="btn btn--primary">Click here to download Jing (Jerry) Yan’s Curriculum Vitae (C.V.)
