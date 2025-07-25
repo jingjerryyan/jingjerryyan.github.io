@@ -15,7 +15,7 @@ main:
     url: /publications/
  
   - title: "C.V."
-    url: /cv/
+    url: /cv-json/
  
   - title: "DISCUSSIONS"
     url: /talks/    
@@ -32,7 +32,7 @@ main:
 
     
   # - title: "CV"
-  #   url: /cv-json/
+  #   url: /cv/
     
   - title: "DECODING"
     url: /markdown/
