@@ -1,7 +1,6 @@
 ---
 layout: archive
 title: "C.V."
-permalink: /cv-json/
 author_profile: false
 redirect_from:
   - /resume-json
@@ -25,19 +24,32 @@ redirect_from:
       width: 70%;
     }
   }
+.pdf-container {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .pdf-viewer {
+    width: 100%;
+    height: 800px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
 </style>
 
 {% include cv-template.html %}
 
 <div class="cv-download-links">
-  <a href="{{ base_path }}/files/cv.pdf" class="btn btn--primary">Download CV as PDF</a>
-  <a href="{{ base_path }}" class="btn btn--inverse">View Markdown CV</a>
+  <a href="{{ base_path }}/files/cv.pdf" class="btn btn--primary">Click here to download Jing (Jerry) Yan’s Curriculum Vitae (C.V.)
+</a>
 </div>
-<div class="pdf-container" style="width: 100%; height: 800px; margin-top: 20px;">
-  <embed
-    src="/files/cv.pdf"
-    type="application/pdf"
-    width="100%"
-    height="100%"
-  />
+<div class="pdf-container">
+  <object 
+    data="{{ base_path }}/files/cv.pdf" 
+    type="application/pdf" 
+    class="pdf-viewer">
+    
+  </object>
 </div>
