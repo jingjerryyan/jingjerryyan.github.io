@@ -8,26 +8,31 @@
 #      Markdown formatted page while the second is generated using JSON.
 
 main:
-  - title: "Publications"
+  - title: "HOME"
+    url:  "https://jingjerryyan.github.io/"
+ 
+  - title: "RESEARCH"
     url: /publications/
-
-  - title: "Talks"
+ 
+  - title: "C.V."
+    url: /cv/
+ 
+  - title: "DISCUSSIONS"
     url: /talks/    
 
-  - title: "Teaching"
+  - title: "TEACHING"
     url: /teaching/    
     
-  - title: "Portfolio"
-    url: /portfolio/
+  #- title: "Portfolio"
+  #  url: /portfolio/
         
   - title: "Blog Posts"
     url: /year-archive/
     
-  - title: "CV"
-    url: /cv/
+
     
   # - title: "CV"
   #   url: /cv-json/
     
-  - title: "Guide"
+  - title: "DECODING"
     url: /markdown/
