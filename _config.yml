@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Jing (Jerry) Yan"
+title                    : "JING (JERRY) YAN"
 title_separator          : "-"
 name                     : &name "Jing Yan"
 description              : &description "personal description"
@@ -22,7 +22,7 @@ repository               : "jingjerryyan.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Jing Yan"
+  name             : "Jing Yan 闫璟"
   pronouns         : # example: "he/him"  
   bio              : "Ph.D. student in Finance, TempleU."
   location         : "Philadelphia, PA"
