@@ -11,41 +11,43 @@ author_profile: true
         My Chinese name often poses pronunciation challenges for non-Mandarin speakers, and this guide explains its meaning.
     </p>
 
-    <h1>MY NAME</h1>
-
     <!-- 闫 (Yán) -->
     <section class="name-section">
         <div class="character-image">
-            <img src="/images/yan.png" alt="闫" style="width:120px">
+            <img src="/images/yan.png" alt="闫">
         </div>
-        <h2>闫 (Yán) surname</h2>
-        <ul>
-            <li><strong>Pronunciation:</strong> IPA: [jɛn]; "yen" (如英语"yen"货币) 阴平</li>
-            <li><strong>Original meaning:</strong> "里门守卫，古代掌管闾里之官"</li>
-            <li>說文解字(注):「閻，里中門也。从門，臽聲。」<br>
-                (注：闫为阎的俗写变体)</li>
-            <li><strong>Components:</strong> 门 (gate) + 三 (symbolic of multiple gates)</li>
-            <li><strong>Classical citation:</strong> 《周礼·地官》：「閻胥掌比中閻之众」<br>
-                ("The Yan official supervised dwellers within the inner gates")</li>
-            <li><strong>Modern usage:</strong> 专用于姓氏，表门第传承</li>
-        </ul>
+        <div class="name-details">
+            <h2>闫 (Yán) surname</h2>
+            <ul>
+                <li><strong>Pronunciation:</strong> IPA: [jɛn]; "yen" (如英语"yen"货币) 阴平</li>
+                <li><strong>Original meaning:</strong> "里门守卫，古代掌管闾里之官"</li>
+                <li>說文解字(注):「閻，里中門也。从門，臽聲。」<br>
+                    (注：闫为阎的俗写变体)</li>
+                <li><strong>Components:</strong> 门 (gate) + 三 (symbolic of multiple gates)</li>
+                <li><strong>Classical citation:</strong> 《周礼·地官》：「閻胥掌比中閻之众」<br>
+                    ("The Yan official supervised dwellers within the inner gates")</li>
+                <li><strong>Modern usage:</strong> 专用于姓氏，表门第传承</li>
+            </ul>
+        </div>
     </section>
 
     <!-- 璟 (Jǐng) -->
     <section class="name-section">
         <div class="character-image">
-            <img src="/images/jing.png" alt="璟" style="width:120px">
+            <img src="/images/jing.png" alt="璟">
         </div>
-        <h2>璟 (Jǐng) first name</h2>
-        <ul>
-            <li><strong>Pronunciation:</strong> IPA: [tɕiŋ]; "jing" (如"jeep"加"ing") 上声</li>
-            <li><strong>Original meaning:</strong> "玉的光彩，美玉之辉"</li>
-            <li>《说文新附》：「璟，玉光彩。从玉，景聲。」</li>
-            <li><strong>Components:</strong> 王 (玉的简写) + 景 (light/scenery)</li>
-            <li><strong>Classical citation:</strong> 《艺文类聚》：「琼瑰璟瑜，灼烁明珠」<br>
-                ("Like radiant jade and gleaming pearls")</li>
-            <li><strong>Modern usage:</strong> 喻指德行高洁，光芒内敛</li>
-        </ul>
+        <div class="name-details">
+            <h2>璟 (Jǐng) first name</h2>
+            <ul>
+                <li><strong>Pronunciation:</strong> IPA: [tɕiŋ]; "jing" (如"jeep"加"ing") 上声</li>
+                <li><strong>Original meaning:</strong> "玉的光彩，美玉之辉"</li>
+                <li>《说文新附》：「璟，玉光彩。从玉，景聲。」</li>
+                <li><strong>Components:</strong> 王 (玉的简写) + 景 (light/scenery)</li>
+                <li><strong>Classical citation:</strong> 《艺文类聚》：「琼瑰璟瑜，灼烁明珠」<br>
+                    ("Like radiant jade and gleaming pearls")</li>
+                <li><strong>Modern usage:</strong> 喻指德行高洁，光芒内敛</li>
+            </ul>
+        </div>
     </section>
 </div>
 
@@ -61,29 +63,32 @@ author_profile: true
     line-height: 1.7;
     margin-bottom: 2.5rem;
 }
-h1 {
-    color: #2c3e50;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.8rem;
-    margin: 2rem 0;
-}
 .name-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
     background: #f8f9fa;
     padding: 1.8rem;
     margin-bottom: 2rem;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
+.character-image {
+    flex-shrink: 0;
+    width: 120px;
+}
+.character-image img {
+    width: 100%;
+    height: auto;
+}
+.name-details {
+    flex-grow: 1;
+}
 h2 {
     color: #3b5998;
     margin-top: 0;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #e0e0e0;
-}
-.character-image {
-    text-align: center;
-    margin: 0 auto 1.5rem;
 }
 ul {
     padding-left: 0;
