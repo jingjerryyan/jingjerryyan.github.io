@@ -21,11 +21,9 @@ author_profile: true
         <ul class="name-details">
             <li><strong>Pronunciation:</strong> IPA: [jɛn]; "yén" – akin to "yen" currency, lips spread as in "yes", high-flat pitch.</li>
             <li><strong>Original meaning:</strong> "Gatekeeper; custodian of inner gates"</li>
-            <li><em>說文解字(形):</em>「閻，里中門也。從門，臽聲。」<br>
-                <span class="annotation">(注：闫为阎的俗写变体)</span></li>
+            <li><em>說文解字(形):</em>「閻，里中門也。從門，臽聲。」 <span class="annotation">(注：闫为阎的俗写变体)</span></li>
             <li><strong>Components:</strong> Outer: 门 (gate); Inner: 三 (symbolizing multiple gates). Together depicting successive gateways guarding a precinct.</li>
-            <li><strong>Classical citation:</strong> 《周礼·地官》：「閻胥掌比中閻之众」<br>
-                <span class="translation">("The Yan steward oversaw those dwelling within the inner gates" — Rites of Zhou, c. 3rd century BCE)</span></li>
+            <li><strong>Classical citation:</strong> 《周礼·地官》：「閻胥掌比中閻之众」<span class="translation">("The Yan steward oversaw those dwelling within the inner gates" — Rites of Zhou, c. 3rd century BCE)</span></li>
             <li><strong>Later usage:</strong> Denotes "gatekeeper lineage", now exclusively a surname carrying connotations of guardianship.</li>
         </ul>
     </div>
@@ -43,15 +41,14 @@ author_profile: true
             <li><strong>Original meaning:</strong> "The inner luminosity of flawless jade"</li>
             <li><em>說文新附:</em>「璟，玉光彩。從玉，景聲。」</li>
             <li><strong>Components:</strong> Left: 王 (jade radical); Right: 景 (scenery/illumination). Together evoking the play of light across precious stone.</li>
-            <li><strong>Classical citation:</strong> 《艺文类聚》卷八十三：「琼瑰璟瑜，灼烁明珠」<br>
-                <span class="translation">("Like luminous jade and glowing pearls, their brilliance outshines celestial bodies" — Tang Dynasty compendium, 624 CE)</span></li>
+            <li><strong>Classical citation:</strong> 《艺文类聚》卷八十三：「琼瑰璟瑜，灼烁明珠」<span class="translation">("Like luminous jade and glowing pearls, their brilliance outshines celestial bodies" — Tang Dynasty compendium, 624 CE)</span></li>
             <li><strong>Later usage:</strong> Poetic term for moral brilliance, often used in names to signify cultivated virtue shining through demeanor.</li>
         </ul>
     </div>
 </section>
 
 <style>
-/* 精确还原图片中的视觉样式 */
+/* 精确样式控制 */
 .name-card {
     display: flex;
     margin-bottom: 40px;
@@ -68,6 +65,7 @@ author_profile: true
     flex-grow: 1;
 }
 
+/* 保持标题大小不变 */
 .name-title {
     font-weight: 400;
     color: #224378;
@@ -77,11 +75,12 @@ author_profile: true
     font-family: "Noto Serif SC", serif;
 }
 
+/* 缩小所有其他文字 */
 .name-details {
     padding-left: 0;
     list-style: none;
-    font-size: 1.05em;
-    line-height: 1.8;
+    font-size: 0.95em; /* 缩小字号 */
+    line-height: 1.7;
     color: #333;
 }
 
@@ -91,6 +90,7 @@ author_profile: true
     padding-left: 1em;
 }
 
+/* 项目符号样式 */
 .name-details li::before {
     content: "•";
     position: absolute;
@@ -98,22 +98,24 @@ author_profile: true
     color: #666;
 }
 
+/* 加粗文本样式 */
 .name-details strong {
     font-weight: 600;
     color: #2c3e50;
 }
 
+/* 斜体文本样式 */
 .name-details em {
     font-style: italic;
     color: #555;
 }
 
+/* 注释和翻译样式 */
 .annotation, .translation {
-    display: block;
+    display: inline; /* 改为行内显示 */
     color: #666;
-    font-size: 0.95em;
-    margin-top: 5px;
-    line-height: 1.5;
+    font-size: 0.9em;
+    margin-left: 0.5em;
 }
 
 .translation {
