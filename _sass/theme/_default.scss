@@ -30,7 +30,7 @@ $sidebar-screen-min-width   : 1024px;
 :root {
     --global-base-color                 : #{$gray};
     --global-bg-color                   : #{$background};
-    --global-footer-bg-color            : #f2f3f3;
+    --global-footer-bg-color            : #{$background};
     --global-border-color               : #{$lighter-gray};
     --global-dark-border-color          : #bdc1c4;
     --global-code-background-color      : #fafafa;
