@@ -186,8 +186,8 @@ hr { border-color: var(--line) !important; }
   margin: 0 0 2.4rem;
   border-radius: 14px;
   overflow: hidden;
-  background: radial-gradient(120% 140% at 50% 0%, var(--hero-ink) 0%, var(--hero-ink-2) 70%);
-  box-shadow: 0 24px 70px rgba(20,14,10,0.22), inset 0 0 0 1px rgba(215,199,168,0.08);
+  background: radial-gradient(120% 140% at 50% 0%, #fbf8f2 0%, #f1ece2 72%, #ece4d6 100%);
+  box-shadow: inset 0 0 0 1px rgba(123,34,48,0.10);
   min-height: 320px;
   display: flex;
   align-items: center;
@@ -197,8 +197,8 @@ hr { border-color: var(--line) !important; }
 .hero__grid {
   position: absolute; inset: 0; pointer-events: none; opacity: 0.5;
   background-image:
-    linear-gradient(rgba(215,199,168,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(215,199,168,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(33,29,26,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33,29,26,0.05) 1px, transparent 1px);
   background-size: 46px 46px;
   mask-image: radial-gradient(75% 75% at 50% 45%, #000 40%, transparent 100%);
   -webkit-mask-image: radial-gradient(75% 75% at 50% 45%, #000 40%, transparent 100%);
@@ -206,7 +206,7 @@ hr { border-color: var(--line) !important; }
 .hero__inner { position: relative; z-index: 2; text-align: center; padding: 3.2rem 1.2rem; pointer-events: none; }
 .hero__sub {
   font-family: "Inter", sans-serif;
-  color: rgba(215,199,168,0.72);
+  color: rgba(74,67,60,0.85);
   font-size: 0.82rem;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -217,14 +217,14 @@ hr { border-color: var(--line) !important; }
   font-family: Monaco, Consolas, monospace;
   font-size: 0.62rem;
   letter-spacing: 1.5px;
-  color: rgba(215,199,168,0.5);
-  border: 1px solid rgba(215,199,168,0.18);
+  color: rgba(123,34,48,0.85);
+  border: 1px solid rgba(123,34,48,0.28);
   border-radius: 999px;
   padding: 3px 10px;
-  background: rgba(20,22,28,0.35);
+  background: rgba(251,248,242,0.72);
   backdrop-filter: blur(2px);
   animation: floaty 7s ease-in-out infinite alternate;
-  pointer-events: none;
+  pointer-events: auto; cursor: pointer;
   white-space: nowrap;
 }
 .hero__tag--tl { top: 14px; left: 16px; }
@@ -591,4 +591,103 @@ body:has(.hero--full) .page__title { display: none !important; }
   border: 1px solid var(--line) !important;
   box-shadow: 0 1px 3px rgba(33,29,26,0.06) !important;
   border-radius: 8px !important;
+}
+
+
+/* ============ v8: clickable entries + mid-edge tags + hover ============ */
+.hero__enter { pointer-events: auto !important; cursor: pointer; text-decoration: none; }
+.hero__tag {
+  transition: color .28s ease, border-color .28s ease, background .28s ease, transform .28s ease, box-shadow .28s ease;
+}
+.hero__tag:hover,
+.hero__tag:focus-visible {
+  color: #5e1a25 !important;
+  border-color: rgba(123,34,48,0.65) !important;
+  background: rgba(251,248,242,0.95) !important;
+  box-shadow: 0 6px 18px rgba(123,34,48,0.14);
+  transform: translateY(-1px);
+}
+.hero__tag .dot {
+  display: inline-block; width: 5px; height: 5px; margin-left: 7px;
+  border-radius: 50%; background: #7b2230; vertical-align: middle;
+  box-shadow: 0 0 0 0 rgba(123,34,48,0.5);
+  animation: heroPulse 2.6s ease-out infinite;
+}
+@keyframes heroPulse {
+  0% { box-shadow: 0 0 0 0 rgba(123,34,48,0.45); }
+  70% { box-shadow: 0 0 0 7px rgba(123,34,48,0); }
+  100% { box-shadow: 0 0 0 0 rgba(123,34,48,0); }
+}
+/* mid-edge entries */
+.hero__tag--tc { top: 14px; left: 50%; transform: translateX(-50%); animation-delay: .8s; }
+.hero__tag--bc { bottom: 14px; left: 50%; transform: translateX(-50%); animation-delay: 2.8s; }
+.hero__tag--tc:hover, .hero__tag--bc:hover { transform: translateX(-50%) translateY(-1px); }
+
+/* elegant, small scroll cue */
+.hero__scroll {
+  position: absolute; bottom: 46px; left: 50%; transform: translateX(-50%);
+  z-index: 4; text-decoration: none; text-align: center; pointer-events: auto;
+  font-family: "Inter", sans-serif; font-size: 0.56rem; letter-spacing: 3px;
+  color: rgba(74,67,60,0.55); text-transform: uppercase;
+}
+.hero__scroll .hero__scroll-line {
+  display: block; width: 1px; height: 26px; margin: 8px auto 0;
+  background: linear-gradient(rgba(123,34,48,0.7), rgba(123,34,48,0));
+  animation: scrollBob 2.2s ease-in-out infinite;
+}
+@keyframes scrollBob { 0%,100% { opacity: .4; height: 20px; } 50% { opacity: 1; height: 30px; } }
+
+/* ============ v8: HOME intro section (identity + bio) ============ */
+.intro {
+  max-width: 900px;
+  margin: 4.5rem auto 3rem;
+  padding: 0 1.4rem;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.intro__card { text-align: center; }
+.intro__photo {
+  width: 200px; height: 250px; object-fit: cover;
+  border-radius: 6px; display: block; margin: 0 auto 1.1rem;
+  box-shadow: 0 12px 34px rgba(33,29,26,0.14);
+  filter: grayscale(12%);
+}
+.intro__name {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.5rem; font-weight: 600; color: var(--ink); line-height: 1.15;
+}
+.intro__zh {
+  font-size: 1rem; color: var(--accent); margin-top: .25rem; letter-spacing: 2px;
+}
+.intro__role {
+  font-family: "Inter", sans-serif; font-size: 0.82rem; color: var(--muted, #8c8477);
+  margin-top: .55rem; line-height: 1.4;
+}
+.intro__links { margin-top: 1.1rem; display: flex; flex-direction: column; gap: .55rem; align-items: center; }
+.intro__link {
+  font-family: "Inter", sans-serif; font-size: 0.82rem; color: var(--ink-soft) !important;
+  text-decoration: none !important; position: relative; padding-bottom: 2px;
+  transition: color .25s ease;
+}
+.intro__link::after {
+  content: ""; position: absolute; left: 50%; bottom: 0; width: 0; height: 1px;
+  background: var(--accent); transition: width .3s ease, left .3s ease;
+}
+.intro__link:hover { color: var(--accent) !important; }
+.intro__link:hover::after { left: 0; width: 100%; }
+
+.intro__body p { color: var(--ink-soft) !important; font-size: 1rem; line-height: 1.75; margin: 0 0 1.3rem; }
+.intro__interests {
+  border-top: 1px solid var(--line, #e3dccf); padding-top: 1.2rem; font-size: .95rem !important;
+}
+.intro__interests-label {
+  display: block; font-family: "Inter", sans-serif; text-transform: uppercase;
+  letter-spacing: 2px; font-size: .68rem; color: var(--accent); margin-bottom: .45rem; font-weight: 600;
+}
+@media (max-width: 760px) {
+  .intro { grid-template-columns: 1fr; gap: 2rem; margin-top: 3rem; }
+  .intro__photo { width: 170px; height: 212px; }
+  .hero__tag--tc, .hero__tag--bc { display: none; }
 }
