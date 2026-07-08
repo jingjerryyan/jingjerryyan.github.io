@@ -15,9 +15,9 @@
   --accent: #7b2230;      /* burgundy */
   --accent-soft: #9b3341;
   --accent-deep: #5e1a25;
-  --hero-ink: #14161c;    /* deep digital-space panel */
-  --hero-ink-2: #0e1015;
-  --hero-star: #d7c7a8;   /* warm star-dust */
+  --hero-ink: #201519;    /* deep digital-space panel */
+  --hero-ink-2: #170f12;
+  --hero-star: #e7d3b0;   /* warm star-dust */
 }
 
 /* ---- Force the ivory light theme everywhere (override toggle) ---- */
@@ -330,3 +330,75 @@ hr { border-color: var(--line) !important; }
 .greedy-nav .hidden-links li a:hover { color: var(--accent) !important; }
 .greedy-nav__toggle:hover .navicon,
 .greedy-nav__toggle .navicon { background: var(--ink) !important; }
+
+
+/* ============================================================
+   Refinements v4 — layout fix, elegant nav, unified surfaces
+   ============================================================ */
+
+/* ---- Fix: keep the author sidebar in normal flow so it never
+   overflows onto the footer on short pages ---- */
+@media screen and (min-width: 1024px) {
+  .sidebar {
+    position: sticky !important;
+    top: 2em !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* ---- More refined top navigation ---- */
+.greedy-nav a {
+  color: var(--ink-soft) !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 0.35em 0.15em;
+  border-bottom: none !important;
+  position: relative;
+}
+.greedy-nav a:hover { color: var(--accent) !important; }
+/* animated underline that grows from the centre */
+.greedy-nav .visible-links a:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 0.05em;
+  height: 1px !important;
+  background: var(--accent) !important;
+  transition: left 0.3s ease, right 0.3s ease;
+}
+.greedy-nav .visible-links a:hover:before { left: 0.15em; right: 0.15em; }
+.site-title, .masthead .site-title {
+  letter-spacing: 0.08em !important;
+  font-weight: 700 !important;
+}
+
+/* ---- Unified surfaces: notices / callout boxes match the paper theme ---- */
+.notice, .notice--info, .notice--primary, .notice--success,
+.notice--warning, .notice--danger, .archive .notice--info {
+  background-color: var(--bg-alt) !important;
+  border: 1px solid var(--line) !important;
+  border-left: 3px solid var(--accent) !important;
+  color: var(--ink-soft) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+.notice em, .notice--info em { color: var(--muted) !important; }
+
+/* ---- My Story text tone matches the footer / theme ink ---- */
+.story-section p, .story-section,
+.page__content .story-section p {
+  color: var(--ink-soft) !important;
+}
+
+/* ---- Footer, quietly on-theme ---- */
+.page__footer {
+  background-color: var(--bg-alt) !important;
+  border-top: 1px solid var(--line) !important;
+  color: var(--muted) !important;
+}
+.page__footer a { color: var(--accent) !important; }
