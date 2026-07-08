@@ -206,8 +206,8 @@ hr { border-color: var(--line) !important; }
 .hero__inner { position: relative; z-index: 2; text-align: center; padding: 3.2rem 1.2rem; pointer-events: none; }
 .hero__sub {
   font-family: "Inter", sans-serif;
-  color: rgba(74,67,60,0.85);
-  font-size: 0.82rem;
+  color: rgba(33,29,26,0.92) !important;
+  font-size: 0.98rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-top: 1.1rem;
@@ -690,4 +690,78 @@ body:has(.hero--full) .page__title { display: none !important; }
   .intro { grid-template-columns: 1fr; gap: 2rem; margin-top: 3rem; }
   .intro__photo { width: 170px; height: 212px; }
   .hero__tag--tc, .hero__tag--bc { display: none; }
+}
+
+
+/* ============ v9: inner-page left alignment + hide footer + intro redesign ============ */
+
+body:not(:has(.hero--full)) #main {
+  max-width: 1000px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+body:not(:has(.hero--full)) .archive,
+body:not(:has(.hero--full)) .page {
+  float: none !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0 !important;
+}
+body:not(:has(.hero--full)) .page__inner-wrap { margin: 0 !important; }
+body:not(:has(.hero--full)) .page__title,
+body:not(:has(.hero--full)) .page__content { text-align: left !important; }
+
+.page__footer,
+.page__footer-follow,
+.page__footer-copyright,
+#footer,
+footer.page__footer { display: none !important; }
+
+.intro {
+  max-width: 760px;
+  margin: 4.5rem auto 5rem;
+  padding: 0 1.5rem;
+  display: block;
+}
+.intro__head {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.4rem;
+  padding-bottom: 2.2rem;
+  border-bottom: 1px solid var(--line);
+}
+.intro__photo {
+  width: 150px; height: 188px; object-fit: cover;
+  border-radius: 6px; flex-shrink: 0;
+  box-shadow: 0 12px 34px rgba(33,29,26,0.16);
+  filter: grayscale(10%);
+}
+.intro__id { flex-grow: 1; }
+.intro__name {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2rem !important; font-weight: 600; color: var(--ink) !important;
+  line-height: 1.1; margin: 0 0 0.2rem !important;
+}
+.intro__zh { font-size: 1.15rem; color: var(--accent); letter-spacing: 3px; margin-bottom: 0.7rem; }
+.intro__role { font-family: "Inter", sans-serif; font-size: 0.9rem; color: var(--muted) !important; margin-bottom: 0.9rem; }
+.intro__links { font-family: "Inter", sans-serif; font-size: 0.88rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.intro__link { color: var(--ink-soft) !important; text-decoration: none !important; position: relative; padding-bottom: 2px; transition: color .25s ease; }
+.intro__link::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--accent); transition: width .3s ease; }
+.intro__link:hover { color: var(--accent) !important; }
+.intro__link:hover::after { width: 100%; }
+.intro__sep { color: var(--muted); }
+
+.intro__body p { color: var(--ink-soft) !important; font-size: 1.05rem; line-height: 1.8; margin: 0 0 1.6rem; text-align: left; }
+.intro__interests { padding-top: 1.2rem; border-top: 1px solid var(--line); }
+.intro__interests-label { display: block; font-family: "Inter", sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; }
+.intro__interests-body { color: var(--ink-soft) !important; font-size: 1rem; }
+
+@media (max-width: 620px) {
+  .intro__head { flex-direction: column; text-align: center; align-items: center; }
+  .intro__links { justify-content: center; }
+  .intro__name { font-size: 1.7rem !important; }
 }
