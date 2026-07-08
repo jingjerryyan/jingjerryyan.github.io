@@ -1,4 +1,4 @@
-/* Immersive hero: particle name-field + restrained melodic audio (rewrite) */
+/* Immersive hero v2: particle name-field + restrained melodic audio */
 (function () {
   var hero = document.querySelector('.hero--full');
   var canvas = document.querySelector('.hero__canvas');
@@ -7,212 +7,174 @@
 
   var DPR = Math.min(window.devicePixelRatio || 1, 2);
   var W = 0, H = 0;
-  var particles = [];
+  var word = [];
+  var dust = [];
   var mouse = { x: -9999, y: -9999, active: false };
 
-  // ---- palette (academic light theme) ----
-  var INK = [33, 29, 26];        // charcoal particle
-  var ACCENT = [123, 34, 48];    // burgundy highlight
+  var INK = 'rgba(33,29,26,';
+  var ACC = 'rgba(123,34,48,';
 
   function sizeCanvas() {
     var r = hero.getBoundingClientRect();
-    W = Math.max(1, Math.floor(r.width));
-    H = Math.max(1, Math.floor(r.height));
-    canvas.width = Math.floor(W * DPR);
-    canvas.height = Math.floor(H * DPR);
+    W = Math.max(1, Math.round(r.width));
+    H = Math.max(1, Math.round(r.height));
+    canvas.width = Math.round(W * DPR);
+    canvas.height = Math.round(H * DPR);
     canvas.style.width = W + 'px';
     canvas.style.height = H + 'px';
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
   }
 
-  // ---- build target points by rasterizing "JING YAN" ----
-  function buildTargets() {
+  function targets() {
     var off = document.createElement('canvas');
-    var octx = off.getContext('2d');
     off.width = W; off.height = H;
-    // smaller title: scale font to a fraction of width
-    var fs = Math.min(W * 0.12, H * 0.30, 150);
-    octx.fillStyle = '#000';
-    octx.textAlign = 'center';
-    octx.textBaseline = 'middle';
-    octx.font = '600 ' + fs + 'px "Playfair Display", Georgia, serif';
-    octx.fillText('JING YAN', W / 2, H * 0.42);
-
-    var gap = Math.max(4, Math.round(fs / 22)); // density -> smaller particles
-    var data;
-    try { data = octx.getImageData(0, 0, W, H).data; } catch (e) { return []; }
+    var o = off.getContext('2d');
+    var fs = Math.min(W * 0.11, H * 0.28, 132);
+    o.fillStyle = '#000';
+    o.textAlign = 'center';
+    o.textBaseline = 'middle';
+    o.font = '600 ' + fs + 'px "Playfair Display", Georgia, serif';
+    o.fillText('JING YAN', W / 2, H * 0.44);
+    var gap = Math.max(5, Math.round(fs / 20));
+    var d;
+    try { d = o.getImageData(0, 0, W, H).data; } catch (e) { return []; }
     var pts = [];
     for (var y = 0; y < H; y += gap) {
       for (var x = 0; x < W; x += gap) {
-        var a = data[(y * W + x) * 4 + 3];
-        if (a > 128) pts.push({ x: x, y: y });
+        if (d[(y * W + x) * 4 + 3] > 128) pts.push({ x: x, y: y });
       }
     }
     return pts;
   }
 
-  function initParticles() {
-    var pts = buildTargets();
-    particles = pts.map(function (p) {
+  function build() {
+    var pts = targets();
+    word = pts.map(function (p) {
       return {
-        hx: p.x, hy: p.y,                 // home (target)
+        hx: p.x, hy: p.y,
         x: Math.random() * W, y: Math.random() * H,
         vx: 0, vy: 0,
-        r: Math.random() * 1.1 + 0.7,     // smaller dots
-        tw: Math.random() * Math.PI * 2   // twinkle phase
+        r: Math.random() * 1.0 + 0.9,
+        tw: Math.random() * 6.283
       };
     });
-    // ambient dust that never joins the word
-    var dustN = Math.round((W * H) / 26000);
-    for (var i = 0; i < dustN; i++) {
-      particles.push({
-        hx: null, hy: null,
+    dust = [];
+    var n = Math.max(40, Math.round((W * H) / 24000));
+    for (var i = 0; i < n; i++) {
+      dust.push({
         x: Math.random() * W, y: Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.12,
-        vy: (Math.random() - 0.5) * 0.12,
-        r: Math.random() * 0.9 + 0.4,
-        tw: Math.random() * Math.PI * 2,
-        dust: true
+        vx: (Math.random() - 0.5) * 0.14,
+        vy: (Math.random() - 0.5) * 0.14,
+        r: Math.random() * 0.8 + 0.4,
+        tw: Math.random() * 6.283
       });
     }
+    if (window.console) console.log('[hero] built word=' + word.length + ' dust=' + dust.length + ' W=' + W + ' H=' + H);
   }
 
-  var MOUSE_R = 70;   // smaller interaction radius (was larger)
-  var MOUSE_R2 = MOUSE_R * MOUSE_R;
+  var MR = 66, MR2 = MR * MR;
 
-  function frame() {
+  function tick() {
     ctx.clearRect(0, 0, W, H);
     var t = performance.now() * 0.001;
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
-      if (p.dust) {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-      } else {
-        // spring home
-        var ax = (p.hx - p.x) * 0.02;
-        var ay = (p.hy - p.y) * 0.02;
-        p.vx = (p.vx + ax) * 0.86;
-        p.vy = (p.vy + ay) * 0.86;
-        // gentle mouse repulsion (small radius)
-        if (mouse.active) {
-          var dx = p.x - mouse.x, dy = p.y - mouse.y;
-          var d2 = dx * dx + dy * dy;
-          if (d2 < MOUSE_R2 && d2 > 0.01) {
-            var d = Math.sqrt(d2);
-            var f = (MOUSE_R - d) / MOUSE_R * 2.2;
-            p.vx += (dx / d) * f;
-            p.vy += (dy / d) * f;
-          }
+    var i, p, tw, alpha, col, dx, dy, d2;
+    for (i = 0; i < word.length; i++) {
+      p = word[i];
+      p.vx = (p.vx + (p.hx - p.x) * 0.03) * 0.82;
+      p.vy = (p.vy + (p.hy - p.y) * 0.03) * 0.82;
+      if (mouse.active) {
+        dx = p.x - mouse.x; dy = p.y - mouse.y; d2 = dx * dx + dy * dy;
+        if (d2 < MR2 && d2 > 0.01) {
+          var dd = Math.sqrt(d2), f = (MR - dd) / MR * 2.4;
+          p.vx += (dx / dd) * f; p.vy += (dy / dd) * f;
         }
-        p.x += p.vx; p.y += p.vy;
       }
-      var tw = 0.55 + 0.45 * Math.sin(t * 1.6 + p.tw);
+      p.x += p.vx; p.y += p.vy;
+      tw = 0.6 + 0.4 * Math.sin(t * 1.5 + p.tw);
       var near = false;
-      if (mouse.active && !p.dust) {
-        var ddx = p.x - mouse.x, ddy = p.y - mouse.y;
-        near = (ddx * ddx + ddy * ddy) < MOUSE_R2;
-      }
-      var col = near ? ACCENT : INK;
-      var alpha = (p.dust ? 0.22 : 0.85) * tw;
+      if (mouse.active) { dx = p.x - mouse.x; dy = p.y - mouse.y; near = (dx * dx + dy * dy) < MR2; }
+      col = near ? ACC : INK;
+      alpha = 0.9 * tw;
       ctx.beginPath();
-      ctx.fillStyle = 'rgba(' + col[0] + ',' + col[1] + ',' + col[2] + ',' + alpha + ')';
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = col + alpha.toFixed(3) + ')';
+      ctx.arc(p.x, p.y, p.r, 0, 6.283);
       ctx.fill();
     }
-    requestAnimationFrame(frame);
+    for (i = 0; i < dust.length; i++) {
+      p = dust[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; else if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; else if (p.y > H) p.y = 0;
+      tw = 0.5 + 0.5 * Math.sin(t * 1.3 + p.tw);
+      ctx.beginPath();
+      ctx.fillStyle = INK + (0.20 * tw).toFixed(3) + ')';
+      ctx.arc(p.x, p.y, p.r, 0, 6.283);
+      ctx.fill();
+    }
+    requestAnimationFrame(tick);
   }
 
-  // ================= AUDIO: "Long Time" style melody =================
-  // Restrained, note-by-note but legato-connected. Pentatonic/minor loop.
-  var AudioCtx = window.AudioContext || window.webkitAudioContext;
+  var AC = window.AudioContext || window.webkitAudioContext;
   var actx = null, master = null;
-  // A minor pentatonic-ish descending motif reminiscent of a dreamy loop
-  var MELODY = [ 440.00, 392.00, 349.23, 329.63, 293.66, 261.63, 293.66, 329.63 ];
+  var MELODY = [440.00, 392.00, 349.23, 329.63, 293.66, 261.63, 293.66, 329.63];
   var step = 0, lastNote = 0;
 
-  function ensureAudio() {
+  function initAudio() {
     if (actx) return;
     try {
-      actx = new AudioCtx();
-      master = actx.createGain();
-      master.gain.value = 0.05;      // very restrained
-      // soft airy reverb-ish via feedback delay
-      var delay = actx.createDelay();
-      delay.delayTime.value = 0.28;
-      var fb = actx.createGain();
-      fb.gain.value = 0.32;
-      var wet = actx.createGain();
-      wet.gain.value = 0.35;
+      actx = new AC();
+      master = actx.createGain(); master.gain.value = 0.05;
+      var delay = actx.createDelay(); delay.delayTime.value = 0.30;
+      var fb = actx.createGain(); fb.gain.value = 0.33;
+      var wet = actx.createGain(); wet.gain.value = 0.34;
       master.connect(actx.destination);
-      master.connect(delay);
-      delay.connect(fb); fb.connect(delay);
+      master.connect(delay); delay.connect(fb); fb.connect(delay);
       delay.connect(wet); wet.connect(actx.destination);
-      window.__heroMasterDelay = delay;
     } catch (e) { actx = null; }
   }
-
   function pluck(freq) {
     if (!actx) return;
     var now = actx.currentTime;
-    // legato-connected: overlap envelopes so notes bleed into one another
-    var o1 = actx.createOscillator();
-    var o2 = actx.createOscillator();
-    o1.type = 'sine';
-    o2.type = 'triangle';
-    o1.frequency.value = freq;
-    o2.frequency.value = freq * 2.001; // shimmer octave
+    var o1 = actx.createOscillator(), o2 = actx.createOscillator();
+    o1.type = 'sine'; o2.type = 'triangle';
+    o1.frequency.value = freq; o2.frequency.value = freq * 2.001;
     var g = actx.createGain();
     g.gain.setValueAtTime(0.0001, now);
-    g.gain.exponentialRampToValueAtTime(0.9, now + 0.04);   // soft attack
-    g.gain.exponentialRampToValueAtTime(0.0001, now + 1.1); // long tail -> connected
-    var g2 = actx.createGain();
-    g2.gain.value = 0.35;
-    o2.connect(g2); g2.connect(g);
-    o1.connect(g);
-    g.connect(master);
-    o1.start(now); o2.start(now);
-    o1.stop(now + 1.2); o2.stop(now + 1.2);
+    g.gain.exponentialRampToValueAtTime(0.9, now + 0.05);
+    g.gain.exponentialRampToValueAtTime(0.0001, now + 1.15);
+    var g2 = actx.createGain(); g2.gain.value = 0.32;
+    o2.connect(g2); g2.connect(g); o1.connect(g); g.connect(master);
+    o1.start(now); o2.start(now); o1.stop(now + 1.25); o2.stop(now + 1.25);
   }
-
-  function playNext() {
-    ensureAudio();
-    if (!actx) return;
+  function note() {
+    initAudio(); if (!actx) return;
     if (actx.state === 'suspended') actx.resume();
     var t = performance.now();
-    if (t - lastNote < 90) return; // avoid machine-gun; still note-by-note
+    if (t - lastNote < 95) return;
     lastNote = t;
-    pluck(MELODY[step % MELODY.length]);
-    step++;
+    pluck(MELODY[step % MELODY.length]); step++;
   }
 
-  // ---- events ----
   hero.addEventListener('pointermove', function (e) {
     var r = hero.getBoundingClientRect();
-    mouse.x = e.clientX - r.left;
-    mouse.y = e.clientY - r.top;
-    mouse.active = true;
-    // trigger the next melody note as the cursor connects across the field
-    playNext();
+    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.active = true;
+    note();
   });
   hero.addEventListener('pointerleave', function () { mouse.active = false; mouse.x = -9999; mouse.y = -9999; });
-  // entries also chime
   Array.prototype.forEach.call(document.querySelectorAll('.hero__enter'), function (a) {
-    a.addEventListener('pointerenter', playNext);
+    a.addEventListener('pointerenter', note);
   });
 
   var rt;
   window.addEventListener('resize', function () {
     clearTimeout(rt);
-    rt = setTimeout(function () { sizeCanvas(); initParticles(); }, 160);
+    rt = setTimeout(function () { sizeCanvas(); build(); }, 170);
   });
 
-  function boot() { sizeCanvas(); initParticles(); frame(); }
+  function boot() { sizeCanvas(); build(); tick(); }
+  boot();
   if (document.fonts && document.fonts.ready) {
-    boot();
-    document.fonts.ready.then(function () { initParticles(); });
-  } else {
-    boot();
+    document.fonts.ready.then(function () { sizeCanvas(); build(); });
   }
+  setTimeout(function () { sizeCanvas(); build(); }, 700);
 })();
