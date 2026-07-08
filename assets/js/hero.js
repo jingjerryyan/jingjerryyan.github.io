@@ -69,7 +69,6 @@
         tw: Math.random() * 6.283
       });
     }
-    if (window.console) console.log('[hero] built word=' + word.length + ' dust=' + dust.length + ' W=' + W + ' H=' + H);
   }
 
   var MR = 66, MR2 = MR * MR;
