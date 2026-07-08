@@ -402,3 +402,53 @@ hr { border-color: var(--line) !important; }
   color: var(--muted) !important;
 }
 .page__footer a { color: var(--accent) !important; }
+
+
+/* ============================================================
+   Refinements v5 — elegant sidebar links + home title
+   ============================================================ */
+
+/* ---- Sidebar contact links: clean, borderless, editorial ---- */
+.author__urls-wrapper { font-size: inherit !important; }
+.author__urls {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin-top: 0.7em !important;
+}
+.author__urls::before,
+.author__urls::after { display: none !important; content: none !important; }
+.author__urls li,
+.author__urls li.author__desktop {
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 0 0.6em 0 !important;
+  white-space: nowrap;
+}
+.author__urls li a,
+.author__urls li.author__desktop {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.25em 0 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft) !important;
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  transition: color 0.25s ease;
+}
+.author__urls li a:hover { color: var(--accent) !important; }
+.author__urls li i {
+  color: var(--accent) !important;
+  width: 1.05em;
+  text-align: center;
+  opacity: 0.9;
+  margin: 0 !important;
+}
+
+/* ---- Home page: hide the redundant page title above the hero ---- */
+body:has(.hero__canvas) .page__title { display: none !important; }
