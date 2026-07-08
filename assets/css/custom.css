@@ -1,174 +1,247 @@
 /* ============================================================
-Custom dark / editorial theme override
-Loaded AFTER main.css in _includes/head.html
+Custom dark / editorial theme override  (v2)
+Academic, restrained, quietly sharp. Loaded after main.css.
 ============================================================ */
 
 /* ---- Palette ---- */
 :root {
-  --bg: #0d0d0d;
-  --bg-alt: #141414;
-  --ink: #e9e4da;
-  --ink-soft: #b3 aca0;
-  --muted: #8a8378;
-  --line: #262320;
-  --gold: #b8935a;
-  --gold-soft: #d8b982;
+  --bg: #0c0c0d;
+  --bg-alt: #131315;
+  --panel: #16161a;
+  --ink: #e7e3da;
+  --ink-soft: #a9a399;
+  --muted: #7c766c;
+  --line: #23221f;
+  --accent: #c2a878;
+  --accent-soft: #dcc79b;
 }
 
-/* ---- Base ---- */
-html { font-size: 17px; }
+/* ---- Force dark everywhere (kill light/dark toggle states) ---- */
+html, body, html.dark, body.dark, html.light, body.light {
+  background-color: #0c0c0d !important;
+  color: #e7e3da !important;
+}
+
+/* Hide the day/night toggle button entirely */
+#theme-toggle { display: none !important; }
+
+html { font-size: 17px; scroll-behavior: smooth; }
 
 body {
-  background-color: #0d0d0d !important;
-  color: #e9e4da !important;
   font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   line-height: 1.85 !important;
   letter-spacing: 0.2px;
   -webkit-font-smoothing: antialiased;
+  position: relative;
 }
 
-.page__content, .archive, .sidebar, .author__content, .masthead__inner-wrap, .page__footer {
+/* ---- Subtle animated background glow (very low key) ---- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60vw 60vw at 18% 12%, rgba(194,168,120,0.055), transparent 60%),
+    radial-gradient(50vw 50vw at 85% 88%, rgba(120,130,160,0.045), transparent 60%);
+  animation: bgdrift 24s ease-in-out infinite alternate;
+}
+
+@keyframes bgdrift {
+  0%   { transform: translate3d(0,0,0) scale(1); opacity: 0.9; }
+  100% { transform: translate3d(0,-2%,0) scale(1.06); opacity: 1; }
+}
+
+.page__content, .archive, .sidebar, .author__content, .page__footer, .page {
   background-color: transparent !important;
-  color: #e9e4da !important;
+  color: #e7e3da !important;
 }
 
-/* ---- Headings: high-contrast fashion serif ---- */
+/* ---- Headings: restrained serif ---- */
 h1, h2, h3, h4, h5, h6,
 .page__title, .archive__item-title, .author__name {
   font-family: "Playfair Display", Georgia, serif !important;
-  color: #f3efe7 !important;
+  color: #f1ece2 !important;
   font-weight: 600 !important;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
   line-height: 1.25 !important;
 }
 
-.page__title {
-  font-size: 2.6rem !important;
-  margin-bottom: 1.4rem !important;
-}
+.page__title { font-size: 2.5rem !important; margin-bottom: 1.4rem !important; }
+h2 { font-size: 1.8rem !important; margin-top: 2.4rem !important; }
+h3 { font-size: 1.35rem !important; }
 
-h2 { font-size: 1.9rem !important; margin-top: 2.4rem !important; }
-h3 { font-size: 1.4rem !important; }
-
-/* subtle gold hairline under section headers */
 .page__content h2 {
-  border-bottom: 1px solid #262320;
+  border-bottom: 1px solid #23221f;
   padding-bottom: 0.45rem;
 }
 
-/* ---- Links: restrained gold ---- */
+/* ---- Links: muted bronze ---- */
 a, .page__content a {
-  color: #b8935a !important;
+  color: #c2a878 !important;
   text-decoration: none !important;
   transition: color 0.25s ease, border-color 0.25s ease;
   border-bottom: 1px solid transparent;
 }
-
 a:hover, .page__content a:hover {
-  color: #d8b982 !important;
-  border-bottom: 1px solid #b8935a;
+  color: #dcc79b !important;
+  border-bottom: 1px solid rgba(194,168,120,0.6);
 }
 
-/* ---- Body copy rhythm ---- */
-.page__content p {
-  margin: 0 0 1.35rem;
-  color: #d7d1c6 !important;
-}
+.page__content p { margin: 0 0 1.35rem; color: #d3cdc2 !important; }
 
-/* ---- Masthead / top nav ---- */
+/* ---- Masthead / top nav (fix clipped title + gray bar) ---- */
 .masthead {
-  background-color: #0d0d0d !important;
-  border-bottom: 1px solid #262320 !important;
+  background-color: #0c0c0d !important;
+  border-bottom: 1px solid #23221f !important;
   box-shadow: none !important;
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(6px);
 }
-
-.masthead__inner-wrap { padding: 1.1em 1em !important; }
-
-.site-title, .greedy-nav a {
-  color: #e9e4da !important;
-  font-family: "Playfair Display", Georgia, serif !important;
-  letter-spacing: 0.5px;
-}
+.masthead__inner-wrap { padding: 1.1em 1.5em !important; background: transparent !important; }
+.masthead__menu, .masthead__menu-item { background: transparent !important; }
 
 .greedy-nav { background: transparent !important; }
-.greedy-nav a:hover { color: #b8935a !important; }
-.greedy-nav .visible-links a:before { background: #b8935a !important; }
+.greedy-nav a { color: #e7e3da !important; }
+.greedy-nav a:hover { color: #c2a878 !important; }
+.greedy-nav .visible-links a:before { background: #c2a878 !important; height: 1px !important; }
+
+/* the site title item */
+.masthead__menu-item--lg a {
+  font-family: "Playfair Display", Georgia, serif !important;
+  letter-spacing: 1px;
+  padding-left: 0 !important;
+  color: #f1ece2 !important;
+  white-space: nowrap;
+}
 
 /* ---- Author sidebar ---- */
 .author__avatar img {
-  border: 1px solid #262320 !important;
+  border: 1px solid #23221f !important;
   border-radius: 4px !important;
   max-width: 180px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.55);
+  box-shadow: 0 10px 34px rgba(0,0,0,0.6);
+  filter: saturate(0.92);
 }
-
-.author__name { font-size: 1.35rem !important; margin-top: 0.6rem; }
-.author__bio { color: #b3aca0 !important; font-style: italic; }
-.author__urls-wrapper button { color: #e9e4da !important; }
+.author__name { font-size: 1.3rem !important; margin-top: 0.6rem; }
+.author__bio { color: #a9a399 !important; font-style: italic; }
+.author__urls-wrapper button { color: #e7e3da !important; border-color:#23221f !important; }
 
 .author__urls {
-  background: #141414 !important;
-  border: 1px solid #262320 !important;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+  background: #131315 !important;
+  border: 1px solid #23221f !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55) !important;
 }
-
-.author__urls li { border-bottom: 1px solid #1d1a17; }
-.author__urls a { color: #b3aca0 !important; }
-.author__urls a:hover { color: #d8b982 !important; }
+.author__urls:before { border-bottom-color: #23221f !important; }
+.author__urls li { border-bottom: 1px solid #1c1b18; }
+.author__urls a { color: #a9a399 !important; }
+.author__urls a:hover { color: #dcc79b !important; }
 .author__urls .svg-inline--fa,
-.author__urls .ai { color: #b8935a !important; }
+.author__urls .ai, .author__urls i { color: #c2a878 !important; }
 
-/* ---- Archive items (portfolio / talks / publications) ---- */
+/* ---- Archive items ---- */
 .archive__item-title { margin-top: 1.4rem !important; }
-.archive__item-excerpt { color: #9d968a !important; }
-
+.archive__item-excerpt { color: #948e83 !important; }
 .archive__subtitle {
-  color: #f3efe7 !important;
-  border-bottom: 1px solid #262320 !important;
+  color: #f1ece2 !important;
+  border-bottom: 1px solid #23221f !important;
   font-family: "Playfair Display", Georgia, serif !important;
 }
 
-/* ---- Footer ---- */
+/* ---- Footer (kill gray blocks) ---- */
 .page__footer {
-  background-color: #0a0a0a !important;
-  color: #8a8378 !important;
-  border-top: 1px solid #262320 !important;
+  background-color: #0a0a0b !important;
+  color: #7c766c !important;
+  border-top: 1px solid #23221f !important;
+  margin-top: 0 !important;
 }
+.page__footer-follow, .page__footer-copyright { background: transparent !important; }
+.page__footer a { color: #7c766c !important; }
+.page__footer a:hover { color: #c2a878 !important; }
 
-.page__footer a { color: #8a8378 !important; }
-.page__footer a:hover { color: #b8935a !important; }
-.page__footer-follow .social-icons a { color: #b3aca0 !important; }
-
-/* ---- Blockquotes & rules ---- */
-blockquote {
-  border-left: 2px solid #b8935a !important;
-  color: #c9c3b7 !important;
-  font-style: italic;
-}
-
-hr { border-color: #262320 !important; }
-
-/* ---- Selection ---- */
-::selection { background: #b8935a; color: #0d0d0d; }
+/* ---- Blockquotes / rules ---- */
+blockquote { border-left: 2px solid #c2a878 !important; color: #c4bdb1 !important; font-style: italic; }
+hr { border-color: #23221f !important; }
+::selection { background: #c2a878; color: #0c0c0d; }
 
 /* ---- Buttons ---- */
 .btn, .btn--primary {
   background-color: transparent !important;
-  color: #d8b982 !important;
-  border: 1px solid #b8935a !important;
+  color: #dcc79b !important;
+  border: 1px solid #c2a878 !important;
   border-radius: 2px !important;
   letter-spacing: 0.6px;
   text-transform: uppercase;
   font-size: 0.75rem;
 }
+.btn:hover, .btn--primary:hover { background-color: #c2a878 !important; color: #0c0c0d !important; }
 
-.btn:hover, .btn--primary:hover {
-  background-color: #b8935a !important;
-  color: #0d0d0d !important;
+/* ============================================================
+DECODING PAGE  — override the inline light-theme cards
+============================================================ */
+.portfolio-content { color: #d3cdc2 !important; }
+.portfolio-content .intro { color: #a9a399 !important; font-size: 1.05rem; }
+
+.name-section h1, .story-section h1 {
+  color: #f1ece2 !important;
+  border-bottom: 1px solid #23221f !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
 }
 
-/* ---- Generous page breathing room ---- */
-.page { padding-right: 0; }
-@media (min-width: 80em) {
-  .page__content { font-size: 1.02rem; }
+.name-card {
+  background: #131315 !important;
+  border: 1px solid #23221f !important;
+  border-radius: 6px !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.5) !important;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
+.name-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(194,168,120,0.45) !important;
+  box-shadow: 0 20px 55px rgba(0,0,0,0.6) !important;
+}
+
+/* make the character images sit on a soft dark plate, not raw white */
+.chinese-character {
+  background: #f4f1ea;
+  border-radius: 6px;
+  padding: 10px;
+  box-shadow: inset 0 0 0 1px #23221f;
+}
+
+.name-content h2 {
+  color: #dcc79b !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  letter-spacing: 0.4px;
+}
+.name-details li { color: #cfc9be !important; margin-bottom: 0.6rem; }
+.name-details strong { color: #f1ece2 !important; }
+.name-details em { color: #b6b0a4 !important; }
+.annotation, .translation { color: #8a8478 !important; }
+
+.story-section .story-content p { color: #d3cdc2 !important; }
+
+/* ============================================================
+SCROLL-REVEAL ANIMATION
+============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+  body::before { animation: none; }
+}
+
+/* gentle fade-in for the whole main column on load */
+@keyframes riseIn { from { opacity: 0; transform: translateY(14px);} to {opacity:1; transform:none;} }
+.page__content > *:first-child, .archive > h1 { animation: riseIn 0.8s ease both; }
+
+@media (min-width: 80em) { .page__content { font-size: 1.02rem; } }
