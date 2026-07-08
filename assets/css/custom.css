@@ -260,10 +260,10 @@ hr { border-color: var(--line) !important; }
 }
 
 .name-card {
-  background: var(--panel) !important;
+  background: var(--bg-alt) !important;
   border: 1px solid var(--line) !important;
   border-radius: 8px !important;
-  box-shadow: 0 12px 34px rgba(40,30,20,0.10) !important;
+  box-shadow: 0 1px 3px rgba(33,29,26,0.06) !important;
   transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 .name-card:hover {
@@ -570,4 +570,13 @@ body:has(.hero--full) #main .page__content {
   .hero__enter { font-size: 0.62rem; padding: 0.45em 0.8em; letter-spacing: 0.15em; }
   .hero__tag--tl,.hero__tag--tr { top: 3vh; }
   .hero__tag--bl,.hero__tag--br { bottom: 8vh; }
+}
+
+
+/* ---- Decoding: make all three cards share one surface ---- */
+.name-card, .story-content {
+  background: var(--bg-alt) !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: 0 1px 3px rgba(33,29,26,0.06) !important;
+  border-radius: 8px !important;
 }
