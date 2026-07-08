@@ -1,0 +1,174 @@
+/* ============================================================
+Custom dark / editorial theme override
+Loaded AFTER main.css in _includes/head.html
+============================================================ */
+
+/* ---- Palette ---- */
+:root {
+  --bg: #0d0d0d;
+  --bg-alt: #141414;
+  --ink: #e9e4da;
+  --ink-soft: #b3 aca0;
+  --muted: #8a8378;
+  --line: #262320;
+  --gold: #b8935a;
+  --gold-soft: #d8b982;
+}
+
+/* ---- Base ---- */
+html { font-size: 17px; }
+
+body {
+  background-color: #0d0d0d !important;
+  color: #e9e4da !important;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  line-height: 1.85 !important;
+  letter-spacing: 0.2px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page__content, .archive, .sidebar, .author__content, .masthead__inner-wrap, .page__footer {
+  background-color: transparent !important;
+  color: #e9e4da !important;
+}
+
+/* ---- Headings: high-contrast fashion serif ---- */
+h1, h2, h3, h4, h5, h6,
+.page__title, .archive__item-title, .author__name {
+  font-family: "Playfair Display", Georgia, serif !important;
+  color: #f3efe7 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.4px;
+  line-height: 1.25 !important;
+}
+
+.page__title {
+  font-size: 2.6rem !important;
+  margin-bottom: 1.4rem !important;
+}
+
+h2 { font-size: 1.9rem !important; margin-top: 2.4rem !important; }
+h3 { font-size: 1.4rem !important; }
+
+/* subtle gold hairline under section headers */
+.page__content h2 {
+  border-bottom: 1px solid #262320;
+  padding-bottom: 0.45rem;
+}
+
+/* ---- Links: restrained gold ---- */
+a, .page__content a {
+  color: #b8935a !important;
+  text-decoration: none !important;
+  transition: color 0.25s ease, border-color 0.25s ease;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover, .page__content a:hover {
+  color: #d8b982 !important;
+  border-bottom: 1px solid #b8935a;
+}
+
+/* ---- Body copy rhythm ---- */
+.page__content p {
+  margin: 0 0 1.35rem;
+  color: #d7d1c6 !important;
+}
+
+/* ---- Masthead / top nav ---- */
+.masthead {
+  background-color: #0d0d0d !important;
+  border-bottom: 1px solid #262320 !important;
+  box-shadow: none !important;
+}
+
+.masthead__inner-wrap { padding: 1.1em 1em !important; }
+
+.site-title, .greedy-nav a {
+  color: #e9e4da !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  letter-spacing: 0.5px;
+}
+
+.greedy-nav { background: transparent !important; }
+.greedy-nav a:hover { color: #b8935a !important; }
+.greedy-nav .visible-links a:before { background: #b8935a !important; }
+
+/* ---- Author sidebar ---- */
+.author__avatar img {
+  border: 1px solid #262320 !important;
+  border-radius: 4px !important;
+  max-width: 180px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.55);
+}
+
+.author__name { font-size: 1.35rem !important; margin-top: 0.6rem; }
+.author__bio { color: #b3aca0 !important; font-style: italic; }
+.author__urls-wrapper button { color: #e9e4da !important; }
+
+.author__urls {
+  background: #141414 !important;
+  border: 1px solid #262320 !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+}
+
+.author__urls li { border-bottom: 1px solid #1d1a17; }
+.author__urls a { color: #b3aca0 !important; }
+.author__urls a:hover { color: #d8b982 !important; }
+.author__urls .svg-inline--fa,
+.author__urls .ai { color: #b8935a !important; }
+
+/* ---- Archive items (portfolio / talks / publications) ---- */
+.archive__item-title { margin-top: 1.4rem !important; }
+.archive__item-excerpt { color: #9d968a !important; }
+
+.archive__subtitle {
+  color: #f3efe7 !important;
+  border-bottom: 1px solid #262320 !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+}
+
+/* ---- Footer ---- */
+.page__footer {
+  background-color: #0a0a0a !important;
+  color: #8a8378 !important;
+  border-top: 1px solid #262320 !important;
+}
+
+.page__footer a { color: #8a8378 !important; }
+.page__footer a:hover { color: #b8935a !important; }
+.page__footer-follow .social-icons a { color: #b3aca0 !important; }
+
+/* ---- Blockquotes & rules ---- */
+blockquote {
+  border-left: 2px solid #b8935a !important;
+  color: #c9c3b7 !important;
+  font-style: italic;
+}
+
+hr { border-color: #262320 !important; }
+
+/* ---- Selection ---- */
+::selection { background: #b8935a; color: #0d0d0d; }
+
+/* ---- Buttons ---- */
+.btn, .btn--primary {
+  background-color: transparent !important;
+  color: #d8b982 !important;
+  border: 1px solid #b8935a !important;
+  border-radius: 2px !important;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.btn:hover, .btn--primary:hover {
+  background-color: #b8935a !important;
+  color: #0d0d0d !important;
+}
+
+/* ---- Generous page breathing room ---- */
+.page { padding-right: 0; }
+@media (min-width: 80em) {
+  .page__content { font-size: 1.02rem; }
+}
