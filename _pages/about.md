@@ -29,23 +29,26 @@ redirect_from:
 </div>
 
 <section id="intro" class="intro">
-  <div class="intro__card">
+  <div class="intro__head">
     <img class="intro__photo" src="/images/profile.png" alt="Jing Yan" />
-    <div class="intro__name">Jing Yan</div>
-    <div class="intro__zh">闫璟 &middot; 閂璟</div>
-    <div class="intro__role">Ph.D. Student in Finance, Temple University</div>
-    <div class="intro__links">
-      <a class="intro__link" href="https://maps.app.goo.gl/BAMwC53Uw7yoKzCX7" target="_blank" rel="noopener">
-        <span class="intro__link-label">Philadelphia, PA</span>
-      </a>
-      <a class="intro__link" href="mailto:jing.yan0001@temple.edu">
-        <span class="intro__link-label">jing.yan0001@temple.edu</span>
-      </a>
+    <div class="intro__id">
+      <h1 class="intro__name">Jing Yan</h1>
+      <div class="intro__zh">闫璟 &middot; 閆璟</div>
+      <div class="intro__role">Ph.D. Student in Finance, Temple University</div>
+      <div class="intro__links">
+        <a class="intro__link" href="https://maps.app.goo.gl/BAMwC53Uw7yoKzCX7" target="_blank" rel="noopener">Philadelphia, PA</a>
+        <span class="intro__sep">&middot;</span>
+        <a class="intro__link" href="mailto:jing.yan0001@temple.edu">jing.yan0001@temple.edu</a>
+      </div>
     </div>
   </div>
+
   <div class="intro__body">
     <p>I am a Second Year Ph.D. student in Finance at Temple University&rsquo;s Fox School of Business, supervised by Prof. Samuel Rosen, Prof. Gurdip Bakshi and Prof. Xiaohui Gao Bakshi. I hold an M.Sc. in Finance from The Hong Kong University of Science and Technology (2023&ndash;2025) and a B.Sc. in Mathematics and Statistics from Hong Kong Baptist University (2019&ndash;2023). My current research studies how equity markets priced U.S. stablecoin legislation.</p>
-    <p class="intro__interests"><span class="intro__interests-label">Research Interests</span>Empirical Banking &middot; Financial Regulation &middot; FinTech and Digital Assets</p>
+    <div class="intro__interests">
+      <span class="intro__interests-label">Research Interests</span>
+      <span class="intro__interests-body">Empirical Banking &middot; Financial Regulation &middot; FinTech and Digital Assets</span>
+    </div>
   </div>
 </section>
 
