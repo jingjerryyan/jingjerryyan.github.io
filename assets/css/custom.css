@@ -311,3 +311,22 @@ hr { border-color: var(--line) !important; }
 .page__content > *:first-child, .archive > h1 { animation: riseIn 0.8s ease both; }
 
 @media (min-width: 80em) { .page__content { font-size: 1.02rem; } }
+
+
+/* ---- Fix: transparent nav menu items (kill gray blocks) ---- */
+.masthead__menu-item,
+.greedy-nav .visible-links li,
+.greedy-nav .hidden-links,
+.greedy-nav .hidden-links li {
+  background: transparent !important;
+}
+.greedy-nav .hidden-links {
+  background: var(--panel) !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: 0 12px 40px rgba(40,30,20,0.14) !important;
+}
+.masthead__menu-item a { color: var(--ink-soft) !important; }
+.masthead__menu-item a:hover { color: var(--accent) !important; }
+.greedy-nav .hidden-links li a:hover { color: var(--accent) !important; }
+.greedy-nav__toggle:hover .navicon,
+.greedy-nav__toggle .navicon { background: var(--ink) !important; }
