@@ -1,0 +1,21 @@
+# Order of the links in the site header.
+# Removing a link hides it from the header.
+
+main:
+  - title: "Home"
+    url: "https://jingjerryyan.github.io/"
+
+  - title: "Research"
+    url: /publications/
+
+  - title: "C.V."
+    url: /cv-json/
+
+  - title: "Discussions"
+    url: /talks/
+
+  - title: "Teaching"
+    url: /teaching/
+
+  - title: "Decoding"
+    url: /decoding/
