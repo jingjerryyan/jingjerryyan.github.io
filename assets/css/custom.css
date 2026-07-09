@@ -1147,3 +1147,29 @@ body:has(.site-bg__canvas):not(:has(.hero--full)) .page__title {
   background-image: linear-gradient(#5e1a25, #5e1a25);
   background-size: 100% 1.5px;
 }
+
+
+/* ===== Round 5 refinements ===== */
+
+/* #1 Decoding intro paragraph: match the darker 'My Story' body color */
+.portfolio-content .intro,
+.intro { color: var(--ink-soft) !important; }
+
+/* #2 Remove the lone status dot in the bottom-left corner */
+.hero__status,
+.site-bg__status { display: none !important; }
+
+/* #3 Home page: fit in a single viewport, no vertical scroll */
+body:has(.hero--full) { overflow: hidden; padding-bottom: 0 !important; }
+body:has(.hero--full) #main {
+  height: 100vh;
+  min-height: 0;
+  overflow: hidden;
+}
+body:has(.hero--full) .hero--full {
+  height: 100vh;
+  min-height: 0;
+  padding: 4vh 5vw;
+  overflow: hidden;
+}
+body:has(.hero--full) .page__footer { display: none !important; }
