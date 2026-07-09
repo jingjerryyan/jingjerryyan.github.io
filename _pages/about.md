@@ -30,6 +30,7 @@ redirect_from:
         <ul class="hero__card-meta">
           <li><i class="fas fa-fw fa-location-dot" aria-hidden="true"></i><a href="https://maps.app.goo.gl/YotxriCCWCpzb8xa8" target="_blank" rel="noopener">Philadelphia, PA</a></li>
           <li><i class="fas fa-fw fa-envelope" aria-hidden="true"></i><a href="mailto:jing.yan0001@temple.edu">Email</a></li>
+          <li><i class="fas fa-fw fa-building-columns" aria-hidden="true"></i><a href="https://www.fox.temple.edu/directory/jing-yan" target="_blank" rel="noopener">School Directory</a></li>
         </ul>
       </aside>
 
@@ -40,10 +41,6 @@ redirect_from:
         <p class="hero__interests"><span>Research Interests</span>Empirical Banking &nbsp;&middot;&nbsp; Financial Regulation &nbsp;&middot;&nbsp; FinTech and Digital Assets</p>
       </div>
     </div>
-  </div>
-
-  <div class="hero__status" aria-hidden="true">
-    <span class="hero__status-dot"></span>&#9834; move to play
   </div>
 </div>
 
