@@ -1093,3 +1093,30 @@ body:has(.site-bg__canvas):not(:has(.hero--full)) .page__title {
   border: 1px solid rgba(90,70,55,0.22) !important;
   box-shadow: 0 14px 40px rgba(40,30,20,0.14) !important;
 }
+
+
+/* ===== Round 3 refinements ===== */
+
+/* #5 Remove the faint background grid site-wide for a cleaner, higher-end look */
+.hero__grid,
+.site-bg__grid { display: none !important; }
+
+/* #2 Nudge the profile photo down within the same-size frame */
+.hero__avatar {
+  object-position: center 22% !important;
+}
+
+/* #3 Make the music dot clearly visible on ivory: larger, richer burgundy + soft halo */
+.site-bg__status .hero__status-dot,
+.hero__status-dot {
+  width: 11px !important; height: 11px !important;
+  background: #7b2230 !important;
+  box-shadow: 0 0 0 3px rgba(123,34,48,0.14), 0 0 10px rgba(123,34,48,0.55) !important;
+}
+.site-bg__status.is-armed .hero__status-dot,
+.hero__status.is-armed .hero__status-dot {
+  background: #b8863b !important;
+  box-shadow: 0 0 0 3px rgba(184,134,59,0.18), 0 0 12px rgba(184,134,59,0.8) !important;
+}
+/* Slightly stronger label text so the pairing reads clearly */
+.hero__status { color: rgba(94,26,37,0.60) !important; }
