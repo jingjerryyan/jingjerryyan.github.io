@@ -1203,3 +1203,45 @@ body:has(.hero--full) .greedy-nav .visible-links {
   letter-spacing: 0.12em !important;
   color: var(--ink, #211d1a) !important;
 }
+
+/* ============================================================
+   HOME REBALANCE + serif brand (nav underline gap, card/intro layout)
+   Appended last so it wins the cascade. Safe to remove as a unit.
+   ============================================================ */
+
+/* Internal-page masthead brand: serif + normal case, echoing the hero title */
+.masthead__menu-item--lg.persist a,
+.masthead__menu-item--lg a {
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-weight: 600 !important;
+  font-size: 1.28rem !important;      /* ~20px, clearly the anchor */
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;    /* "Jing Yan", not "JING YAN" */
+  color: var(--ink, #211d1a) !important;
+}
+
+/* (a) Tighten the gap between the Home nav links and their underline */
+.hero--full .hero__topnav {
+  padding-bottom: 11px !important;
+  margin-bottom: 40px !important;
+}
+
+/* (b) Rebalance the photo-card + intro so it breathes */
+.hero--full .hero__body {
+  grid-template-columns: 300px 1fr !important;  /* wider card column */
+  column-gap: 4.4rem !important;                /* more air between columns */
+  align-items: start !important;                /* top-align card with title */
+}
+.hero--full .hero__card {
+  padding: 2.6rem 2rem !important;              /* roomier card */
+}
+.hero--full .hero__avatar {
+  width: 184px !important;                       /* larger portrait */
+  height: 232px !important;
+}
+
+/* (c) Loosen the name -> subtitle -> bio vertical rhythm on the intro side */
+.hero--full .hero__name { margin-bottom: 0.55rem !important; }
+.hero--full .hero__role { margin-bottom: 1.9rem !important; }
+.hero--full .hero__bio  { line-height: 1.85 !important; }
+.hero--full .hero__interests { padding-top: 1.6rem !important; margin-top: 0.4rem !important; }
