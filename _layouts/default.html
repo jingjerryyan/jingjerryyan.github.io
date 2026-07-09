@@ -13,6 +13,16 @@ layout: compress
 
   <body>
 
+    <!-- Site-wide ambient background (ivory hero effect) -->
+    <div class="site-bg" aria-hidden="true">
+      <canvas class="hero__canvas site-bg__canvas"></canvas>
+      <div class="hero__grid site-bg__grid"></div>
+      <div class="hero__aurora site-bg__aurora"></div>
+    </div>
+    <div class="hero__status site-bg__status" aria-hidden="true">
+      <span class="hero__status-dot"></span>&#9834; move to play
+    </div>
+
     {% include browser-upgrade.html %}
     {% include masthead.html %}
 
@@ -26,6 +36,7 @@ layout: compress
     </div>
 
     {% include scripts.html %}
+    <script src="/assets/js/hero.js"></script>
 
   </body>
 </html>
