@@ -1173,3 +1173,33 @@ body:has(.hero--full) .hero--full {
   overflow: hidden;
 }
 body:has(.hero--full) .page__footer { display: none !important; }
+
+/* ============================================================
+   HOME LAYOUT REFINEMENT (round: nav enlarge + content widen)
+   Appended last so it wins the cascade. Safe to remove as a unit.
+   ============================================================ */
+
+/* (2) Widen the Home content block and tighten side gutters */
+.hero--full { padding: 7vh 4vw !important; }
+.hero--full .hero__frame { max-width: 1180px !important; }
+.hero--full .hero__body { column-gap: 3.6rem !important; }
+
+/* (1) Enlarge the Home top navigation links */
+body:has(.hero--full) .greedy-nav .visible-links a,
+body:has(.hero--full) .masthead__menu-item a {
+  font-size: 0.98rem !important;   /* ~15.7px, up from ~14px */
+  letter-spacing: 0.16em !important;
+}
+body:has(.hero--full) .greedy-nav .visible-links {
+  gap: 0.4rem !important;
+}
+
+/* Masthead brand name: modestly larger + heavier so it anchors the bar
+   (keeps existing uppercase style; conservative bump only) */
+.masthead__menu-item--lg.persist a,
+.masthead__menu-item--lg a {
+  font-size: 1.02rem !important;   /* ~16.3px, larger than the ~14px links */
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  color: var(--ink, #211d1a) !important;
+}
