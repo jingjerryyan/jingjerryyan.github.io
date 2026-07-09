@@ -1,3 +1,22 @@
+
+
+/* ============================================================
+   Fix hero text readability: beat .page__content p specificity
+   and neutralise the scroll-reveal fade inside the hero.
+   ============================================================ */
+.hero .hero__role,
+.hero__main .hero__role { color: rgba(231,211,176,0.7) !important; }
+.hero .hero__bio,
+.hero__main .hero__bio { color: rgba(231,211,176,0.9) !important; }
+.hero .hero__interests,
+.hero__main .hero__interests { color: rgba(231,211,176,0.92) !important; }
+.hero .hero__card-cjk,
+.hero__card .hero__card-cjk { color: var(--accent-soft) !important; }
+.hero__card .hero__card-meta li { color: rgba(231,211,176,0.82) !important; }
+
+/* Hero content should never stay hidden from the reveal animation */
+.hero .reveal,
+.hero__frame .reveal { opacity: 1 !important; transform: none !important; }
 /* ============================================================
    Custom editorial theme  (v3 — "Scheme A": ivory / burgundy)
    Warm academic, elegant, quietly confident. Loaded after main.css.
@@ -33,8 +52,7 @@ html[data-theme="dark"], html[data-theme="light"] {
 html { font-size: 17px; scroll-behavior: smooth; }
 
 body {
-  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  line-height: 1.85 !important;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif !important;  line-height: 1.85 !important;
   letter-spacing: 0.1px;
   -webkit-font-smoothing: antialiased;
   position: relative;
