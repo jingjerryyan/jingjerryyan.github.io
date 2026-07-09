@@ -1245,3 +1245,26 @@ body:has(.hero--full) .greedy-nav .visible-links {
 .hero--full .hero__role { margin-bottom: 1.9rem !important; }
 .hero--full .hero__bio  { line-height: 1.85 !important; }
 .hero--full .hero__interests { padding-top: 1.6rem !important; margin-top: 0.4rem !important; }
+
+/* ============================================================
+   HOME FINE-TUNE (nav top gap, nav size, tighter card, title||photo)
+   Appended last so it wins the cascade. Safe to remove as a unit.
+   ============================================================ */
+
+/* Pull the whole hero up so the nav is not stranded far from the top */
+.hero--full { padding-top: 3.4vh !important; padding-bottom: 3.4vh !important; }
+.hero--full .hero__frame { padding-top: 2.2rem !important; padding-bottom: 2.2rem !important; }
+
+/* Nav a touch larger, sized to sit confidently with the portrait */
+.hero--full .hero__topnav a { font-size: 0.95rem !important; letter-spacing: 0.14em !important; }
+.hero--full .hero__topnav { padding-bottom: 10px !important; margin-bottom: 46px !important; }
+
+/* Tighten the photo card so the frame hugs its contents */
+.hero--full .hero__body { grid-template-columns: 248px 1fr !important; column-gap: 4rem !important; }
+.hero--full .hero__card { padding: 0.6rem 1.1rem 1.4rem !important; }
+.hero--full .hero__avatar { width: 200px !important; height: 250px !important; }
+
+/* Make the portrait top sit parallel with the 'Jing Yan' title top */
+.hero--full .hero__body { align-items: start !important; }
+.hero--full .hero__card { margin-top: 0 !important; }
+.hero--full .hero__main { padding-top: 0 !important; }
