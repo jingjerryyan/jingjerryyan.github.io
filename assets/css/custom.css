@@ -905,3 +905,119 @@ body:has(.hero--full) .page__title { display: none !important; }
 @media (max-width: 780px) {
   .hero__card { margin-top: 1.4rem; }
 }
+
+
+/* ############################################################
+   Site-wide ambient background (ivory hero effect) + music dot
+   Injected in _layouts/default.html on every page.
+   Elegant, restrained: ivory paper base, faint warm micro-glow,
+   thin grid, charcoal star-dust particles. Content stays crisp.
+   ############################################################ */
+
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 120% at 18% 6%, rgba(123,34,48,0.05) 0%, transparent 55%),
+    radial-gradient(120% 120% at 85% 94%, rgba(94,26,37,0.045) 0%, transparent 55%),
+    linear-gradient(165deg, #f8f4ee 0%, #f2ece1 70%, #efe8db 100%);
+}
+.site-bg__canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+}
+.site-bg__grid {
+  position: absolute; inset: 0;
+  pointer-events: none; opacity: 0.6;
+  background-image:
+    linear-gradient(rgba(90,70,55,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90,70,55,0.045) 1px, transparent 1px);
+  background-size: 52px 52px;
+  -webkit-mask-image: radial-gradient(85% 85% at 50% 40%, #000 45%, transparent 100%);
+  mask-image: radial-gradient(85% 85% at 50% 40%, #000 45%, transparent 100%);
+}
+.site-bg__aurora {
+  position: absolute; inset: -20%;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 42% at 24% 28%, rgba(155,51,65,0.07), transparent 62%),
+    radial-gradient(34% 40% at 78% 72%, rgba(122,80,96,0.06), transparent 62%),
+    radial-gradient(30% 34% at 60% 16%, rgba(198,150,90,0.05), transparent 62%);
+  filter: blur(22px);
+  animation: auroradrift 44s ease-in-out infinite alternate;
+}
+
+/* Let the ambient background show through the page + content shells */
+html, body,
+html.dark, body.dark, html.light, body.light,
+html[data-theme="dark"], html[data-theme="light"] {
+  background-color: transparent !important;
+}
+.masthead { background: rgba(248,244,238,0.72) !important; backdrop-filter: saturate(1.05) blur(8px); -webkit-backdrop-filter: saturate(1.05) blur(8px); }
+.page__footer { background: transparent !important; }
+
+/* Music / status dot: readable on ivory, bottom-left, all pages */
+.site-bg__status {
+  position: fixed;
+  z-index: 40;
+  left: 4vw; bottom: 3.2vh;
+  right: auto; top: auto;
+  display: inline-flex; align-items: center; gap: 0.55em;
+  font-family: Monaco, Consolas, monospace;
+  font-size: 0.62rem; letter-spacing: 0.12em;
+  color: rgba(74,67,60,0.55);
+  animation: floaty 8s ease-in-out infinite alternate;
+}
+.site-bg__status .hero__status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(123,34,48,0.5);
+  box-shadow: 0 0 6px rgba(123,34,48,0.35);
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+.site-bg__status.is-armed .hero__status-dot {
+  background: #4f9d63; box-shadow: 0 0 8px rgba(79,157,99,0.75);
+}
+
+/* ---- Home hero: dissolve its own dark backdrop so the ivory
+        ambient layer shows through; switch text to dark ink ---- */
+.hero--full {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.hero--full .hero__canvas,
+.hero--full .hero__grid,
+.hero--full .hero__aurora { display: none !important; }
+
+.hero .hero__name,
+.hero__main .hero__name { color: #211d1a !important; }
+.hero .hero__role,
+.hero__main .hero__role { color: rgba(74,67,60,0.85) !important; }
+.hero .hero__bio,
+.hero__main .hero__bio { color: rgba(33,29,26,0.92) !important; }
+.hero .hero__interests,
+.hero__main .hero__interests { color: rgba(33,29,26,0.9) !important; }
+.hero .hero__interests span { color: #7b2230 !important; }
+.hero .hero__topnav a,
+.hero__topnav a { color: rgba(33,29,26,0.78) !important; }
+.hero .hero__topnav a:hover,
+.hero__topnav a:hover { color: #7b2230 !important; }
+.hero__topnav { border-bottom-color: rgba(90,70,55,0.18) !important; }
+
+/* Hero profile card as a soft ivory panel on the ambient bg */
+.hero__card {
+  background: rgba(251,248,242,0.82) !important;
+  border: 1px solid rgba(90,70,55,0.14) !important;
+  box-shadow: 0 18px 50px rgba(40,30,20,0.10) !important;
+}
+.hero .hero__card-name,
+.hero__card .hero__card-name { color: #211d1a !important; }
+.hero .hero__card-cjk,
+.hero__card .hero__card-cjk { color: #7b2230 !important; }
+.hero__card .hero__card-meta li { color: rgba(74,67,60,0.85) !important; }
+.hero__card .hero__card-meta a { color: rgba(74,67,60,0.9) !important; }
+.hero__card .hero__card-meta a:hover { color: #7b2230 !important; }
+.hero__card .hero__card-meta i { color: #7b2230 !important; }
