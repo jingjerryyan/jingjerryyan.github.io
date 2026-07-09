@@ -1029,3 +1029,67 @@ html[data-theme="dark"], html[data-theme="light"] {
 body:has(.site-bg__canvas):not(:has(.hero--full)) .page__title {
   display: block !important;
 }
+
+
+/* ############################################################
+   Refinements: prof links, music dot color, hide nav overflow
+   button, unify subpage content left offset, portrait avatar.
+   ############################################################ */
+
+/* #1 Home bio professor links: burgundy, readable on ivory */
+.hero .hero__bio a,
+.hero__main .hero__bio a,
+.hero__bio a {
+  color: #7b2230 !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(123,34,48,0.4);
+  transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+.hero .hero__bio a:hover,
+.hero__main .hero__bio a:hover,
+.hero__bio a:hover {
+  color: #5e1a25 !important;
+  text-decoration-color: #5e1a25;
+}
+
+/* #2 Music dot: on-palette. Resting = soft burgundy; armed = warm amber-gold */
+.site-bg__status .hero__status-dot,
+.hero__status-dot {
+  background: rgba(123,34,48,0.45) !important;
+  box-shadow: 0 0 6px rgba(123,34,48,0.30) !important;
+}
+.site-bg__status.is-armed .hero__status-dot,
+.hero__status.is-armed .hero__status-dot {
+  background: #b8863b !important;
+  box-shadow: 0 0 9px rgba(184,134,59,0.7) !important;
+}
+
+/* #3 Hide the leftover greedy-nav overflow (hamburger) button */
+.greedy-nav > button,
+.greedy-nav .navicon {
+  display: none !important;
+}
+
+/* #4 Unify subpage content: full width, aligned left (kill float-right gap) */
+@media (min-width: 57.8125em) {
+  .archive {
+    width: 100% !important;
+    float: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+#main { max-width: 1200px; }
+
+/* #5 Portrait rectangular avatar (soft rounded), on-palette border */
+.hero__avatar {
+  width: 158px !important;
+  height: 200px !important;
+  border-radius: 12px !important;
+  object-fit: cover;
+  border: 1px solid rgba(90,70,55,0.22) !important;
+  box-shadow: 0 14px 40px rgba(40,30,20,0.14) !important;
+}
