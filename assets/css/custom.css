@@ -856,3 +856,34 @@ body:has(.hero--full) .page__title { display: none !important; }
   .hero__name { font-size: 2.3rem !important; }
   .hero__card-meta { text-align: left; }
 }
+
+
+/* ============================================================
+   Refined dark palette override (Scheme B: charcoal / ember)
+   Appended last so it wins the cascade.
+   ============================================================ */
+:root {
+  --hero-ink: #17131a;    /* deep near-black, faint warmth */
+  --hero-ink-2: #0c0a0d;  /* almost black depth */
+}
+.hero {
+  background:
+    radial-gradient(85% 120% at 18% 6%, rgba(120,70,58,0.14) 0%, transparent 58%),
+    radial-gradient(80% 110% at 88% 96%, rgba(70,60,80,0.12) 0%, transparent 58%),
+    radial-gradient(60% 80% at 60% 40%, rgba(231,211,176,0.03) 0%, transparent 60%),
+    linear-gradient(165deg, var(--hero-ink) 0%, var(--hero-ink-2) 78%) !important;
+  box-shadow: 0 24px 70px rgba(6,4,8,0.4), inset 0 0 0 1px rgba(215,199,168,0.06) !important;
+}
+.hero__aurora {
+  background:
+    radial-gradient(40% 44% at 24% 28%, rgba(150,96,84,0.16), transparent 62%),
+    radial-gradient(36% 42% at 78% 72%, rgba(96,90,120,0.14), transparent 62%),
+    radial-gradient(30% 34% at 60% 16%, rgba(231,211,176,0.05), transparent 62%) !important;
+  filter: blur(18px) !important;
+}
+
+/* #4 nudge the profile photo/card a little lower */
+.hero__card { margin-top: 3.2rem; }
+@media (max-width: 780px) {
+  .hero__card { margin-top: 1.4rem; }
+}
