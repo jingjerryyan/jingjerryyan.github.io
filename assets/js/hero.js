@@ -245,9 +245,15 @@
     if (s) s.classList.add("is-armed");
     window.removeEventListener("pointerdown", unlock);
     window.removeEventListener("keydown", unlock);
+    window.removeEventListener("mousemove", unlock);
+    window.removeEventListener("pointermove", unlock);
+    window.removeEventListener("touchstart", unlock);
   }
   window.addEventListener("pointerdown", unlock);
   window.addEventListener("keydown", unlock);
+  window.addEventListener("mousemove", unlock);
+  window.addEventListener("pointermove", unlock);
+  window.addEventListener("touchstart", unlock, { passive: true });
 
   var evtTarget = siteWide ? window : hero;
   evtTarget.addEventListener("mousemove", onMove);
