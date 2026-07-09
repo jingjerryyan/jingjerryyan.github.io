@@ -457,125 +457,207 @@ hr { border-color: var(--line) !important; }
 body:has(.hero__canvas) .page__title { display: none !important; }
 
 
+
 /* ============================================================
-   Immersive landing v6 — full-screen hero + clickable entries
+   Home landing — full profile inside the music-box hero
    ============================================================ */
 
-/* ---- Home only: hide the top navigation for a pure landing ---- */
+/* Home only: hide masthead + let the hero go full-bleed */
 body:has(.hero--full) .masthead { display: none !important; }
-
-/* ---- Home only: let the hero break out full-bleed & full-height ---- */
 body:has(.hero--full) { padding-top: 0 !important; }
 body:has(.hero--full) .page,
 body:has(.hero--full) #main,
 body:has(.hero--full) .page__inner-wrap,
-body:has(.hero--full) .initial-content {
+body:has(.hero--full) .initial-content,
+body:has(.hero--full) .page__content {
   max-width: none !important;
   width: 100% !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding: 0 !important;
   margin: 0 !important;
   float: none !important;
 }
-body:has(.hero--full) .page__content { max-width: none !important; padding: 0 !important; }
-/* keep the bio prose readable & centred below the fold */
-body:has(.hero--full) .page__content > p,
-body:has(.hero--full) .page__content > ul,
-body:has(.hero--full) .page__content > h2 {
-  max-width: 760px;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-body:has(.hero--full) .initial-content { margin-top: 0 !important; }
 body:has(.hero--full) .sidebar,
-body:has(.hero--full) .author__profile { display: none !important; }
+body:has(.hero--full) .author__profile,
 body:has(.hero--full) .page__title { display: none !important; }
 
-/* ---- Full-screen hero ---- */
+/* ---- Full-screen hero shell ---- */
 .hero--full {
   position: relative;
   width: 100%;
   left: 0;
-  margin: 0 0 3.5rem 0;
+  margin: 0;
   min-height: 100vh;
-  height: 100vh;
   border-radius: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 7vh 5vw;
+  overflow: hidden;
 }
-.hero--full .hero__canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; }
-.hero--full .hero__grid { position: absolute; inset: 0; z-index: 1; }
+.hero--full .hero__aurora { position: absolute; inset: -20%; z-index: 0; }
+.hero--full .hero__grid   { position: absolute; inset: 0; z-index: 1; }
+.hero--full .hero__canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; }
 
-/* ---- Corner entries: elegant clickable "doors" ---- */
-.hero__enter {
-  position: absolute;
-  z-index: 6;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  padding: 0.6em 1.1em;
-  font-family: "Inter", system-ui, sans-serif !important;
+/* ---- Aurora: slow drifting colour fog for depth ---- */
+.hero__aurora {
+  pointer-events: none;
+  background:
+    radial-gradient(38% 42% at 26% 30%, rgba(155,51,65,0.30), transparent 60%),
+    radial-gradient(34% 40% at 76% 70%, rgba(122,80,96,0.24), transparent 60%),
+    radial-gradient(30% 34% at 60% 18%, rgba(231,211,176,0.06), transparent 60%);
+  filter: blur(16px);
+  animation: auroradrift 36s ease-in-out infinite alternate;
+}
+@keyframes auroradrift {
+  0%   { transform: translate3d(-3%, -2%, 0) scale(1.02); opacity: 0.85; }
+  50%  { transform: translate3d(2%, 3%, 0) scale(1.08); opacity: 1; }
+  100% { transform: translate3d(4%, -3%, 0) scale(1.04); opacity: 0.9; }
+}
+
+/* ---- Content frame sits above the ambient background ---- */
+.hero__frame {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+/* ---- Top navigation (all six sections) ---- */
+.hero__topnav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 2.2rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(231,211,176,0.16);
+}
+.hero__topnav a {
+  position: relative;
+  font-family: "Inter", system-ui, sans-serif;
   font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(231,211,176,0.74) !important;
+  text-decoration: none !important;
+  padding-bottom: 3px;
+  transition: color 0.35s ease;
+}
+.hero__topnav a:hover { color: #fff !important; }
+.hero__topnav a::after {
+  content: "";
+  position: absolute; left: 0; right: 100%; bottom: 0; height: 1px;
+  background: var(--accent-soft);
+  transition: right 0.3s ease;
+}
+.hero__topnav a:hover::after { right: 0; }
+
+/* ---- Two-column body: profile card + main text ---- */
+.hero__body {
+  display: grid;
+  grid-template-columns: 236px 1fr;
+  gap: 3.2rem;
+  align-items: center;
+}
+
+/* Left: photo + name + contact */
+.hero__card { text-align: center; }
+.hero__avatar {
+  width: 172px; height: 172px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(231,211,176,0.35);
+  box-shadow: 0 12px 42px rgba(0,0,0,0.45);
+  margin-bottom: 1.1rem;
+}
+.hero__card-name {
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+  color: #f2e4c9 !important;
+  border: none !important;
+  margin: 0 0 0.15rem !important;
+  letter-spacing: 0.3px;
+}
+.hero__card-cjk {
+  font-size: 1rem;
+  color: rgba(231,211,176,0.8);
+  letter-spacing: 0.16em;
+  margin: 0 0 1rem;
+}
+.hero__card-meta {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 1rem 0 0 !important;
+  border-top: 1px solid rgba(231,211,176,0.16);
+  display: inline-block;
+  text-align: left;
+}
+.hero__card-meta li {
+  margin: 0 0 0.55rem !important;
+  font-size: 0.86rem;
+  color: rgba(231,211,176,0.72);
+}
+.hero__card-meta i { color: var(--accent-soft); margin-right: 0.55em; width: 1.1em; text-align: center; }
+.hero__card-meta a { color: rgba(231,211,176,0.72) !important; border: none !important; text-decoration: none !important; }
+.hero__card-meta a:hover { color: #fff !important; }
+
+/* Right: name, role, bio, interests */
+.hero__name {
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 3rem !important;
+  font-weight: 700 !important;
+  color: #f4e7cd !important;
+  line-height: 1.05;
+  border: none !important;
+  margin: 0 0 0.45rem !important;
+  letter-spacing: 0.5px;
+}
+.hero__role {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.86rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(231,211,176,0.72) !important;
-  background: rgba(32,21,25,0.35);
-  border: 1px solid rgba(231,211,176,0.20) !important;
-  border-radius: 999px;
-  backdrop-filter: blur(4px);
-  text-decoration: none !important;
-  transition: color .45s ease, border-color .45s ease, background .45s ease, transform .45s ease, box-shadow .45s ease;
+  color: var(--accent-soft) !important;
+  margin: 0 0 1.5rem;
 }
-.hero__enter:hover {
-  color: #fff !important;
-  border-color: rgba(231,211,176,0.75) !important;
-  background: rgba(123,34,48,0.45);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+.hero__bio {
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: rgba(231,211,176,0.84) !important;
+  margin: 0 0 1.4rem;
+  max-width: 640px;
 }
-.hero__enter .dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent-soft);
-  box-shadow: 0 0 8px 1px rgba(155,51,65,0.8);
-  animation: heropulse 3.2s ease-in-out infinite;
+.hero__bio a {
+  color: #f0d9a6 !important;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(240,217,166,0.4);
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
-@keyframes heropulse { 0%,100%{opacity:0.5;} 50%{opacity:1;} }
+.hero__bio a:hover { color: #fff !important; border-color: #fff; }
+.hero__interests {
+  font-size: 0.95rem;
+  color: rgba(231,211,176,0.92) !important;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(231,211,176,0.16);
+  max-width: 640px;
+}
+.hero__interests span {
+  display: block;
+  font-family: Monaco, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-soft) !important;
+  margin-bottom: 0.5rem;
+}
 
-.hero__enter { pointer-events: auto; }
-.hero__enter--tl { top: 5vh;  left: 5vw; }
-.hero__enter--tr { top: 5vh;  right: 5vw; }
-.hero__enter--bl { bottom: 5vh; left: 5vw; }
-.hero__enter--br { bottom: 5vh; right: 5vw; }
-
-/* ---- Centre nav (Home / Teaching) under the subtitle ---- */
-.hero__nav {
-  position: relative; z-index: 5;
-  margin-top: 1.4rem;
-  display: flex; align-items: center; justify-content: center; gap: 0.9rem;
-  pointer-events: auto;
-}
-.hero__nav-link {
-  font-family: "Inter", system-ui, sans-serif !important;
-  font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(231,211,176,0.72) !important;
-  text-decoration: none !important;
-  padding: 0.2em 0.1em;
-  border-bottom: 1px solid transparent !important;
-  transition: color .4s ease, border-color .4s ease;
-}
-.hero__nav-link:hover {
-  color: #fff !important;
-  border-color: rgba(231,211,176,0.6) !important;
-}
-.hero__nav-sep { color: rgba(231,211,176,0.35); font-size: 0.7rem; }
-
-/* ---- Corner "system status" sound label ---- */
+/* ---- Corner sound-status label ---- */
 .hero__status {
-  position: absolute; z-index: 6;
-  left: 5vw; bottom: 5vh;
+  position: absolute;
+  z-index: 5;
+  left: 5vw; bottom: 3.5vh;
   display: inline-flex; align-items: center; gap: 0.55em;
   font-family: Monaco, Consolas, monospace;
   font-size: 0.6rem; letter-spacing: 0.12em;
@@ -586,207 +668,27 @@ body:has(.hero--full) .page__title { display: none !important; }
   width: 6px; height: 6px; border-radius: 50%;
   background: rgba(231,211,176,0.35);
   box-shadow: 0 0 6px rgba(231,211,176,0.4);
-  transition: background .5s ease, box-shadow .5s ease;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
 }
 .hero__status.is-armed .hero__status-dot {
   background: #7bd88f; box-shadow: 0 0 8px rgba(123,216,143,0.85);
 }
-/* the bl corner link and the status label share the left edge — stack them */
-.hero__enter--bl { bottom: calc(5vh + 2.2rem); }
 
-/* ---- Aurora: slow drifting colour fog for depth ---- */
-.hero__aurora {
-  position: absolute; inset: -20%;
-  z-index: 1; pointer-events: none;
-  background:
-    radial-gradient(38% 42% at 28% 32%, rgba(155,51,65,0.28), transparent 60%),
-    radial-gradient(34% 40% at 74% 66%, rgba(122,80,96,0.22), transparent 60%),
-    radial-gradient(30% 34% at 60% 20%, rgba(231,211,176,0.06), transparent 60%);
-  filter: blur(14px);
-  animation: auroradrift 34s ease-in-out infinite alternate;
-}
-@keyframes auroradrift {
-  0%   { transform: translate3d(-3%, -2%, 0) scale(1.02); opacity: 0.85; }
-  50%  { transform: translate3d(2%, 3%, 0) scale(1.08); opacity: 1; }
-  100% { transform: translate3d(4%, -3%, 0) scale(1.04); opacity: 0.9; }
-}
-
-/* ---- Subtitle sits under the particle name ---- */
-.hero--full .hero__inner {
-  position: relative; z-index: 5;
-  text-align: center;
-  margin-top: 9rem;
-}
-.hero--full .hero__sub {
-  color: rgba(231,211,176,0.6) !important;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-}
-
-/* ---- Scroll hint ---- */
-.hero__scroll {
-  position: absolute;
-  bottom: 2.2vh; left: 50%; transform: translateX(-50%);
-  z-index: 6;
-  display: flex; flex-direction: column; align-items: center; gap: 0.6em;
-  color: rgba(231,211,176,0.5);
-  font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase;
-}
-.hero__scroll-line {
-  width: 1px; height: 42px;
-  background: linear-gradient(to bottom, rgba(231,211,176,0.6), transparent);
-  animation: scrolldrift 2.4s ease-in-out infinite;
-}
-@keyframes scrolldrift { 0%{opacity:0.2; transform:translateY(-6px);} 50%{opacity:1;} 100%{opacity:0.2; transform:translateY(6px);} }
-
-/* ---- Reveal the bio/content below the fold, centred & readable ---- */
-/* (bio width handled per-element above) */
-
-@media (max-width: 768px) {
-  .hero__enter { font-size: 0.6rem; padding: 0.42em 0.75em; letter-spacing: 0.14em; }
-  .hero__enter--tl,.hero__enter--tr { top: 3vh; }
-  .hero__enter--br { bottom: 8vh; }
-  .hero__enter--bl { bottom: calc(8vh + 2rem); }
-  .hero__status { bottom: 8vh; font-size: 0.55rem; }
+@media (max-width: 820px) {
+  .hero--full { padding: 8vh 6vw; }
+  .hero__body { grid-template-columns: 1fr; gap: 2.2rem; text-align: center; }
+  .hero__card-meta { text-align: left; }
+  .hero__name { font-size: 2.2rem !important; }
+  .hero__bio, .hero__interests { margin-left: auto; margin-right: auto; }
+  .hero__topnav { gap: 0.4rem 1.3rem; margin-bottom: 2.2rem; }
+  .hero__status { bottom: 2.5vh; font-size: 0.55rem; }
 }
 
 
-/* ---- Decoding: make all three cards share one surface ---- */
+/* ---- Decoding: make all cards share one surface ---- */
 .name-card, .story-content {
   background: var(--bg-alt) !important;
   border: 1px solid var(--line) !important;
   box-shadow: 0 1px 3px rgba(33,29,26,0.06) !important;
   border-radius: 8px !important;
 }
-
-
-/* ============================================================
-   Home "about" block — profile card beside the bio (home only)
-   ============================================================ */
-.about {
-  max-width: 940px;
-  margin: 0 auto 4rem;
-  padding: 0 1.6rem;
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 2.6rem;
-  align-items: start;
-}
-.about__card {
-  text-align: center;
-  padding: 1.6rem 1.2rem;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  box-shadow: 0 12px 34px rgba(40,30,20,0.07);
-}
-.about__avatar {
-  width: 150px; height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  box-shadow: 0 6px 20px rgba(40,30,20,0.16), 0 0 0 1px var(--line);
-  margin-bottom: 1rem;
-}
-.about__name {
-  font-family: "Playfair Display", Georgia, serif !important;
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
-  color: #171310 !important;
-  margin: 0 0 0.1rem !important;
-  border: none !important;
-  letter-spacing: 0.3px;
-}
-.about__name-cjk {
-  font-size: 1.02rem;
-  color: var(--accent) !important;
-  letter-spacing: 0.12em;
-  margin: 0 0 0.55rem;
-}
-.about__role {
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--muted) !important;
-  margin: 0 0 1rem;
-}
-.about__meta {
-  list-style: none !important;
-  margin: 0 !important;
-  padding: 0.9rem 0 0 !important;
-  border-top: 1px solid var(--line);
-  text-align: left;
-  display: inline-block;
-}
-.about__meta li {
-  margin: 0 0 0.5rem !important;
-  font-size: 0.9rem;
-  color: var(--ink-soft) !important;
-}
-.about__meta i { color: var(--accent) !important; margin-right: 0.4em; }
-.about__meta a { color: var(--ink-soft) !important; border: none !important; }
-.about__meta a:hover { color: var(--accent) !important; }
-
-.about__body { padding-top: 0.4rem; }
-.about__body p { font-size: 1.04rem; color: var(--ink-soft) !important; }
-.about__interests {
-  margin-top: 1.6rem !important;
-  padding-top: 1.3rem;
-  border-top: 1px solid var(--line);
-  font-size: 0.98rem;
-  color: var(--ink) !important;
-}
-.about__interests span {
-  display: block;
-  font-family: Monaco, Consolas, monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent) !important;
-  margin-bottom: 0.45rem;
-}
-
-/* keep the home about block full-width (undo the narrow prose cap) */
-body:has(.hero--full) .page__content .about {
-  max-width: 940px !important;
-  padding-left: 1.6rem !important;
-  padding-right: 1.6rem !important;
-}
-
-@media (max-width: 720px) {
-  .about { grid-template-columns: 1fr; gap: 1.8rem; }
-  .about__card { max-width: 340px; margin: 0 auto; }
-}
-
-
-/* --- Home about: nav row + body name (added) --- */
-.about__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.4rem;
-  margin: 0 0 1.4rem;
-  padding: 0 0 1.1rem;
-  border-bottom: 1px solid var(--line);
-}
-.about__nav-link {
-  font-family: Monaco, Consolas, monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted) !important;
-  border: none !important;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-.about__nav-link:hover { color: var(--accent) !important; }
-.about__body-name {
-  font-family: "Playfair Display", Georgia, serif !important;
-  font-size: 2rem !important;
-  font-weight: 600 !important;
-  color: #171310 !important;
-  border: none !important;
-  letter-spacing: 0.3px;
-  margin: 0 0 0.15rem !important;
-}
-.about__body .about__role { margin: 0 0 1.2rem; }

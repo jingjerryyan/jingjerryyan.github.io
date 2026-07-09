@@ -6,7 +6,6 @@
    ============================================================ */
 (function () {
   "use strict";
-  var TITLE = "JING YAN";
   var canvas = document.querySelector(".hero__canvas");
   if (!canvas) return;
   var ctx = canvas.getContext("2d");
@@ -30,37 +29,22 @@
   }
 
   function buildParticles() {
-    // Draw the title into an offscreen buffer, then sample pixels.
-    var off = document.createElement("canvas");
-    off.width = W; off.height = H;
-    var octx = off.getContext("2d");
-    // Smaller, more refined title than before.
-    var fontSize = Math.min(W / (TITLE.length * 0.95), H * 0.22);
-    fontSize = Math.max(34, fontSize);
-    octx.fillStyle = "#fff";
-    octx.textAlign = "center";
-    octx.textBaseline = "middle";
-    octx.font = "700 " + fontSize + 'px "Playfair Display", Georgia, serif';
-    octx.fillText(TITLE, W / 2, H * 0.46);
-
-    var img = octx.getImageData(0, 0, W, H).data;
-    var gap = Math.max(3, Math.round(fontSize / 24));
-    var targets = [];
-    for (var y = 0; y < H; y += gap) {
-      for (var x = 0; x < W; x += gap) {
-        var a = img[(y * W + x) * 4 + 3];
-        if (a > 128) targets.push({ x: x, y: y });
-      }
-    }
-    particles = targets.map(function (t) {
-      return {
-        hx: t.x, hy: t.y,                         // home position
-        x: Math.random() * W, y: Math.random() * H,
+    // Ambient star-dust field (no text) — density scales with area.
+    var count = Math.round((W * H) / 5200);
+    count = Math.max(90, Math.min(300, count));
+    particles = [];
+    for (var i = 0; i < count; i++) {
+      var x = Math.random() * W, y = Math.random() * H;
+      particles.push({
+        hx: x, hy: y,                              // anchor position
+        x: x, y: y,
         vx: 0, vy: 0,
-        size: Math.random() * 1.3 + 0.5,
+        drift: Math.random() * Math.PI * 2,        // slow orbit phase
+        driftR: 6 + Math.random() * 16,            // orbit radius
+        size: Math.random() * 1.3 + 0.4,
         tw: Math.random() * Math.PI * 2            // twinkle phase
-      };
-    });
+      });
+    }
   }
 
   function step() {
@@ -68,10 +52,12 @@
     var t = performance.now() * 0.001;
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
-      // gentle spring back home
-      var dx = p.hx - p.x, dy = p.hy - p.y;
-      p.vx += dx * 0.010;
-      p.vy += dy * 0.010;
+      // gentle spring toward a slowly orbiting anchor
+      var tx = p.hx + Math.cos(t * 0.15 + p.drift) * p.driftR;
+      var ty = p.hy + Math.sin(t * 0.15 + p.drift) * p.driftR;
+      var dx = tx - p.x, dy = ty - p.y;
+      p.vx += dx * 0.008;
+      p.vy += dy * 0.008;
       // mouse repulsion — scatter like star-dust
       if (mouse.active) {
         var mdx = p.x - mouse.x, mdy = p.y - mouse.y;
@@ -87,7 +73,7 @@
       p.vx *= 0.88; p.vy *= 0.88;   // heavier damping = slower, softer
       p.x += p.vx; p.y += p.vy;
 
-      var tw = 0.55 + 0.45 * Math.sin(t * 1.4 + p.tw);
+      var tw = 0.32 + 0.30 * Math.sin(t * 1.4 + p.tw);
       var col = (Math.abs(p.vx) + Math.abs(p.vy) > 2.2) ? ACCENT : STAR;
       ctx.beginPath();
       ctx.fillStyle = "rgba(" + col[0] + "," + col[1] + "," + col[2] + "," + tw.toFixed(3) + ")";
