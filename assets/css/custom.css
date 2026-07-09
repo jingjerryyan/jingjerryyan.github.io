@@ -1278,3 +1278,26 @@ body:has(.hero--full) .greedy-nav .visible-links {
 .hero--full .hero__body { grid-template-columns: 232px 1fr !important; }
 .hero--full .hero__card { padding-left: 0.9rem !important; padding-right: 0.9rem !important; }
 .hero--full .hero__avatar { width: 200px !important; height: 250px !important; margin-top: 0 !important; }
+
+/* ============================================================
+   HOME CENTER POLISH (smaller photo, tighter nav, centered pair)
+   Appended last so it wins the cascade. Safe to remove as a unit.
+   ============================================================ */
+
+/* (3) Smaller, more refined nav links */
+.hero--full .hero__topnav a { font-size: 0.82rem !important; letter-spacing: 0.16em !important; }
+/* (2) Nav underline closer to the links */
+.hero--full .hero__topnav { padding-bottom: 5px !important; margin-bottom: 44px !important; }
+
+/* (1) Shrink the portrait */
+.hero--full .hero__avatar { width: 168px !important; height: 210px !important; }
+.hero--full .hero__body { grid-template-columns: 200px 1fr !important; column-gap: 3.4rem !important; }
+.hero--full .hero__card { padding-left: 0.8rem !important; padding-right: 0.8rem !important; }
+
+/* (4) Constrain the intro text to its natural width and center the whole pair */
+.hero--full .hero__main { max-width: 640px !important; }
+.hero--full .hero__body {
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin-inline: auto !important;   /* center the card+intro pair in the viewport */
+}
