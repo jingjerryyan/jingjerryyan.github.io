@@ -1301,3 +1301,22 @@ body:has(.hero--full) .greedy-nav .visible-links {
   max-width: 100% !important;
   margin-inline: auto !important;   /* center the card+intro pair in the viewport */
 }
+
+
+/* ============================================================
+   HOME REFINEMENT v3 (final, correctly-targeted overrides)
+   Appended last so it wins the cascade. Safe to remove as a unit.
+   ============================================================ */
+
+/* (1) Smaller, more refined portrait */
+.hero--full .hero__avatar { width: 165px !important; height: 206px !important; margin-top: 0 !important; }
+
+/* (2) Center the portrait + intro as one balanced unit */
+.hero--full .hero__body { grid-template-columns: 205px minmax(0, 560px) !important; column-gap: 3.2rem !important; justify-content: center !important; align-items: center !important; width: fit-content !important; max-width: 100% !important; margin: 0 auto !important; }
+.hero--full .hero__card { padding-left: 0.8rem !important; padding-right: 0.8rem !important; }
+
+/* (3) Real top nav (masthead) — smaller, more elegant text */
+body:has(.hero--full) .greedy-nav .visible-links a, body:has(.hero--full) .masthead__menu-item a { font-size: 0.8rem !important; letter-spacing: 1.6px !important; }
+
+/* (4) Nav underline sits closer to the links */
+.masthead__inner-wrap { padding-bottom: 0.35em !important; }
