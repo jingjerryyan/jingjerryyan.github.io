@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "JING (JERRY) YAN"
+title                    : "Jing Yan"
 title_separator          : "-"
 name                     : &name "Jing Yan"
 description              : &description "personal description"
