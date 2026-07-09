@@ -1268,3 +1268,13 @@ body:has(.hero--full) .greedy-nav .visible-links {
 .hero--full .hero__body { align-items: start !important; }
 .hero--full .hero__card { margin-top: 0 !important; }
 .hero--full .hero__main { padding-top: 0 !important; }
+
+/* ============================================================
+   HOME POLISH v2 (photo top = title top; frame hugs photo tighter)
+   ============================================================ */
+/* Remove card top padding so the portrait's top lines up with the title */
+.hero--full .hero__card { padding-top: 0 !important; padding-bottom: 1.3rem !important; }
+/* Narrow the card + side padding so the ivory frame hugs the portrait */
+.hero--full .hero__body { grid-template-columns: 232px 1fr !important; }
+.hero--full .hero__card { padding-left: 0.9rem !important; padding-right: 0.9rem !important; }
+.hero--full .hero__avatar { width: 200px !important; height: 250px !important; margin-top: 0 !important; }
