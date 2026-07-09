@@ -1320,3 +1320,19 @@ body:has(.hero--full) .greedy-nav .visible-links a, body:has(.hero--full) .masth
 
 /* (4) Nav underline sits closer to the links */
 .masthead__inner-wrap { padding-bottom: 0.35em !important; }
+
+
+/* ============================================================
+   HOME REFINEMENT v4 (final overrides — spacing & width)
+   Appended last so it wins the cascade. Safe to remove as a unit.
+   ============================================================ */
+
+/* (1) Breathing room above the portrait so the card frame no longer
+   hugs the photo's top edge */
+.hero--full .hero__card { padding-top: 1.7rem !important; }
+
+/* (2) Wider intro column so the bio/interests text is less cramped */
+.hero--full .hero__main { max-width: 760px !important; }
+
+/* (3) Push the portrait and the intro further apart */
+.hero--full .hero__body { grid-template-columns: 205px minmax(0, 760px) !important; column-gap: 4.8rem !important; }
