@@ -1,4 +1,4 @@
-undefined/* ============================================================
+/* ============================================================
    Hero particle landing — "JING YAN" star-dust title
    Full-screen canvas, mouse-scatter, and an interactive
    music-box melody (original, Debussy-flavoured, restrained).
@@ -6,21 +6,23 @@ undefined/* ============================================================
    ============================================================ */
 (function () {
   "use strict";
-  var canvas = document.querySelector(".hero__canvas");
+  var canvas = document.querySelector(".site-bg__canvas") || document.querySelector(".hero__canvas");
   if (!canvas) return;
   var ctx = canvas.getContext("2d");
-  var hero = canvas.closest(".hero") || canvas.parentElement;
+  var host = canvas.closest(".hero") || canvas.parentElement;
+  var siteWide = canvas.classList.contains("site-bg__canvas");
+  var hero = host;
 
   var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
   var particles = [];
   var mouse = { x: -9999, y: -9999, active: false };
-  var STAR = [231, 211, 176];   // warm gold
-  var ACCENT = [193, 96, 108];  // soft burgundy (scatter glow)
+  var STAR = [92, 74, 60];     // charcoal ink (reads on ivory)
+  var ACCENT = [123, 34, 48];   // burgundy (scatter glow)
 
   function sizeCanvas() {
     var r = hero.getBoundingClientRect();
-    W = Math.max(320, Math.floor(r.width));
-    H = Math.max(320, Math.floor(r.height));
+    W = Math.max(320, Math.floor(siteWide ? window.innerWidth : r.width));
+    H = Math.max(320, Math.floor(siteWide ? window.innerHeight : r.height));
     canvas.width = Math.floor(W * DPR);
     canvas.height = Math.floor(H * DPR);
     canvas.style.width = W + "px";
@@ -244,11 +246,12 @@ undefined/* ============================================================
   window.addEventListener("pointerdown", unlock);
   window.addEventListener("keydown", unlock);
 
-  hero.addEventListener("mousemove", onMove);
-  hero.addEventListener("mouseleave", function () {
+  var evtTarget = siteWide ? window : hero;
+  evtTarget.addEventListener("mousemove", onMove);
+  evtTarget.addEventListener("mouseleave", function () {
     mouse.active = false; mouse.x = mouse.y = -9999;
   });
-  hero.addEventListener("touchmove", function (e) { onMove(e); }, { passive: true });
+  evtTarget.addEventListener("touchmove", function (e) { onMove(e); }, { passive: true });
 
   function rebuild() { sizeCanvas(); buildParticles(); }
 
