@@ -1021,3 +1021,11 @@ html[data-theme="dark"], html[data-theme="light"] {
 .hero__card .hero__card-meta a { color: rgba(74,67,60,0.9) !important; }
 .hero__card .hero__card-meta a:hover { color: #7b2230 !important; }
 .hero__card .hero__card-meta i { color: #7b2230 !important; }
+
+
+/* ---- Restore subpage titles hidden by the legacy
+        body:has(.hero__canvas) rule now that the ambient
+        canvas exists on every page. Home (.hero--full) stays hidden. ---- */
+body:has(.site-bg__canvas):not(:has(.hero--full)) .page__title {
+  display: block !important;
+}
