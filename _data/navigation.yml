@@ -6,13 +6,13 @@ main:
     url: "https://jingjerryyan.github.io/"
 
   - title: "Research"
-    url: /publications/
+    url: /research/
 
   - title: "C.V."
     url: /cv-json/
 
   - title: "Discussions"
-    url: /talks/
+    url: /discussions/
 
   - title: "Teaching"
     url: /teaching/
