@@ -15,9 +15,9 @@ redirect_from:
   <div class="hero__frame">
     <nav class="hero__topnav" aria-label="Primary">
       <a href="/">Home</a>
-      <a href="/publications/">Research</a>
+      <a href="/research/">Research</a>
       <a href="/cv-json/">C.V.</a>
-      <a href="/talks/">Discussions</a>
+      <a href="/discussions/">Discussions</a>
       <a href="/teaching/">Teaching</a>
       <a href="/decoding/">Decoding</a>
     </nav>
