@@ -13,7 +13,7 @@ title                    : "Jing Yan"
 title_separator          : "-"
 name                     : &name "Jing Yan"
 description              : &description "personal description"
-url                      : "https://jingjerryyan.github.io/"
+url                      : "https://jingjerryyan.github.io"
 repository               : "jingjerryyan.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
