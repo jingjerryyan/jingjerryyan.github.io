@@ -31,6 +31,8 @@ redirect_from:
           <li><i class="fas fa-fw fa-location-dot" aria-hidden="true"></i><a href="https://maps.app.goo.gl/YotxriCCWCpzb8xa8" target="_blank" rel="noopener">Philadelphia, PA</a></li>
           <li><i class="fas fa-fw fa-envelope" aria-hidden="true"></i><a href="mailto:jing.yan0001@temple.edu">Email</a></li>
           <li><i class="fas fa-fw fa-building-columns" aria-hidden="true"></i><a href="https://www.fox.temple.edu/directory/jing-yan" target="_blank" rel="noopener">School Directory</a></li>
+          <li><i class="ai ai-ssrn ai-fw" aria-hidden="true"></i><a href="#" target="_blank" rel="noopener">SSRN Author</a></li>
+          <li><i class="ai ai-google-scholar ai-fw" aria-hidden="true"></i><a href="#" target="_blank" rel="noopener">Google Scholar</a></li>
         </ul>
       </aside>
 
