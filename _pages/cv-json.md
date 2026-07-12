@@ -38,6 +38,6 @@ redirect_from:
 
 
 <div class="cv-download-links">
-  <a href="{{ base_path }}/files/cv.pdf" class="btn btn--primary">Click here to download Jing (Jerry) Yan’s Curriculum Vitae (C.V.)
+  <a href="{{ base_path }}/files/cv.pdf" class="btn btn--primary">Download C.V. (PDF)
 </a>
 </div>
