@@ -1336,3 +1336,9 @@ body:has(.hero--full) .greedy-nav .visible-links a, body:has(.hero--full) .masth
 
 /* (3) Push the portrait and the intro further apart */
 .hero--full .hero__body { grid-template-columns: 205px minmax(0, 760px) !important; column-gap: 4.8rem !important; }
+
+/* ============================================================
+   HOME REFINEMENT v5 (final override - tighten name/location gap)
+   ============================================================ */
+.hero .hero__card-cjk { margin-bottom: 0.5rem !important; }
+.hero .hero__card-meta { padding-top: 0.6rem !important; }
