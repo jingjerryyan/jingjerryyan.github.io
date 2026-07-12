@@ -39,7 +39,7 @@ redirect_from:
       <div class="hero__main">
         <h1 class="hero__name">Jing Yan</h1>
         <p class="hero__role">Ph.D. Student in Finance</p>
-        <p class="hero__bio">I am a Second Year Ph.D. student in Finance at Temple University's Fox School of Business, supervised by <a href="https://sites.google.com/view/samuel-rosen/">Prof. Samuel Rosen</a>, <a href="https://sites.google.com/view/gurdipbakshi1/home">Prof. Gurdip Bakshi</a> and <a href="https://sites.google.com/site/xiaohuigaobakshi/">Prof. Xiaohui Gao Bakshi</a>. I hold an M.Sc. in Finance from The Hong Kong University of Science and Technology (2023&ndash;2025) and a B.Sc. in Mathematics and Statistics from Hong Kong Baptist University (2019&ndash;2023). My current research studies how equity markets priced U.S. stablecoin legislation.</p>
+        <p class="hero__bio">I am a Second Year Ph.D. student in Finance at Temple University's Fox School of Business, supervised by <a href="https://sites.google.com/view/samuel-rosen/">Prof. Samuel Rosen</a>, <a href="https://sites.google.com/view/gurdipbakshi1/Home">Prof. Gurdip Bakshi</a> and <a href="https://sites.google.com/site/xiaohuigaobakshi/">Prof. Xiaohui Gao Bakshi</a>. I hold an M.Sc. in Finance from The Hong Kong University of Science and Technology (2023&ndash;2025) and a B.Sc. in Mathematics and Statistics from Hong Kong Baptist University (2019&ndash;2023). My current research studies how equity markets priced U.S. stablecoin legislation.</p>
         <p class="hero__interests"><span>Research Interests</span>Empirical Banking &nbsp;&middot;&nbsp; Financial Regulation &nbsp;&middot;&nbsp; FinTech and Digital Assets</p>
       </div>
     </div>
