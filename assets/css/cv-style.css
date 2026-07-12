@@ -10,7 +10,6 @@
 /* Header Styles */
 .cv-header {
   margin-bottom: 2rem;
-  border-bottom: 2px solid #f2f2f2;
   padding-bottom: 1rem;
 }
 
@@ -232,4 +231,15 @@
     border: 1px solid #ccc;
     background-color: transparent;
   }
+}
+
+
+/* PDF embed: rounded corners + soft shadow to match site style */
+.cv-container embed,
+.cv-container iframe,
+.cv-container object {
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(33, 29, 26, 0.14);
+    border: none;
+    overflow: hidden;
 }
