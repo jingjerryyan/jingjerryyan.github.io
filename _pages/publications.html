@@ -9,7 +9,7 @@ author_profile: false
 
 <style>
   /* Hide the generic page title on this page; the 'Working Papers' heading below leads instead. */
-  .page__title { display: none !important; }
+  body:has(.site-bg__canvas):has(.pub-section):not(:has(.hero--full)) .page__title { display: none !important; }
   .pub-list { list-style: none; margin: 1.5rem 0 0; padding: 0; }
   .pub-item { padding: 1.5rem 0; border-top: 1px solid rgba(0,0,0,0.08); }
   .pub-item:first-child { border-top: none; }
