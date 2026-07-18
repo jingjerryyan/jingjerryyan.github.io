@@ -1343,35 +1343,63 @@ body:has(.hero--full) .greedy-nav .visible-links a, body:has(.hero--full) .masth
 .hero .hero__card-cjk { margin-bottom: 0.5rem !important; }
 .hero .hero__card-meta { padding-top: 0.6rem !important; }
 
-/* ===== Mobile fixes (<=820px) ===== */
+/* ===== Mobile refinements (<=820px) ===== */
 @media (max-width: 820px) {
-  /* 1) Force hero into a single column (overrides the !important desktop grid) */
+
+  /* --- 1. Hero: single column + kill overflow that zooms the page --- */
   .hero--full .hero__body,
   .hero--full.hero--profile .hero__body {
     grid-template-columns: 1fr !important;
   }
-
-  /* 2) Stop the background canvas/aurora from overflowing and zooming the page */
   .hero { overflow: hidden; }
-  .hero__aurora,
-  .site-bg__aurora {
+  .hero__aurora, .site-bg__aurora {
     transform: none !important;
     max-width: 100% !important;
   }
-  .hero__canvas,
-  .site-bg__canvas { max-width: 100% !important; }
+  .hero__canvas, .site-bg__canvas { max-width: 100% !important; }
   html, body { overflow-x: hidden; max-width: 100%; }
 
-  /* 3) Make the top nav wrap instead of overflowing off-screen */
+  /* --- 2. Decoding character cards: stack vertically so text stays inside --- */
+  .name-card {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.25rem !important;
+  }
+  .name-card .chinese-character { flex: 0 0 auto !important; margin: 0 auto; }
+  .name-card .name-content {
+    width: 100% !important;
+    min-width: 0 !important;
+    text-align: left;
+  }
+
+  /* --- 3. Polished navigation --- */
+  .greedy-nav { min-width: 0 !important; }
   .greedy-nav .visible-links {
     display: flex !important;
     flex-wrap: wrap !important;
+    align-items: center;
     justify-content: center;
-    row-gap: 0.25rem;
+    column-gap: 1.35rem;
+    row-gap: 0.55rem;
   }
-  .greedy-nav .visible-links li {
-    display: inline-flex !important;
-    vertical-align: middle;
+  .greedy-nav .visible-links li { display: inline-flex !important; }
+  .greedy-nav .visible-links .masthead__menu-item--lg {
+    flex: 0 0 100% !important;
+    justify-content: center;
+    margin-bottom: 0.55rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(40, 30, 20, 0.12);
   }
-  .greedy-nav { min-width: 0 !important; }
+  .greedy-nav .visible-links .masthead__menu-item--lg a {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.45rem;
+    letter-spacing: 0.5px;
+  }
+  .greedy-nav .visible-links .masthead__menu-item a {
+    padding: 0.35rem 0 !important;
+    margin: 0 !important;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+  }
+  .greedy-nav .visible-links .tail { display: none !important; }
 }
