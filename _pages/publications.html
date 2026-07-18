@@ -7,6 +7,36 @@ author_profile: false
 
 {% include base_path %}
 
-<p class="notice--info" style="font-style:italic; color:var(--muted); margin-top:1.5rem;">
-  To be updated. Working papers and projects will be posted here soon.
-</p>
+<style>
+  .pub-list { list-style: none; margin: 1.5rem 0 0; padding: 0; }
+  .pub-item { padding: 1.5rem 0; border-top: 1px solid rgba(0,0,0,0.08); }
+  .pub-item:first-child { border-top: none; }
+  .pub-title { font-size: 1.15rem; font-weight: 700; line-height: 1.4; margin: 0 0 0.35rem; }
+  .pub-authors { color: var(--muted, #8c8477); margin: 0 0 0.5rem; font-size: 0.98rem; }
+  .pub-authors .me { font-weight: 700; color: inherit; }
+  .pub-authors a { color: var(--accent, #7b2230); text-decoration: none; }
+  .pub-authors a:hover { text-decoration: underline; }
+  .pub-status { font-style: italic; color: var(--muted, #8c8477); margin: 0 0 0.75rem; font-size: 0.95rem; }
+  .pub-abstract { margin: 0 0 0.9rem; line-height: 1.6; color: inherit; }
+  .pub-links { margin: 0; }
+  .pub-links a {
+    display: inline-block; margin-right: 0.5rem; padding: 0.3rem 0.85rem;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em;
+    color: var(--accent, #7b2230); border: 1px solid var(--accent, #7b2230);
+    border-radius: 999px; text-decoration: none; transition: all 0.15s ease;
+  }
+  .pub-links a:hover { background: var(--accent, #7b2230); color: #fff; }
+</style>
+
+<section class="pub-section">
+  <h2 id="working-papers">Working Papers</h2>
+  <ol class="pub-list">
+    <li class="pub-item">
+      <p class="pub-title">Who Banks on Stablecoins? Equity-Market Evidence from the GENIUS Act</p>
+      <p class="pub-authors">with <a href="https://sites.google.com/view/samuel-rosen/" target="_blank" rel="noopener">Samuel Rosen</a> and <span class="me">Jing Yan</span></p>
+      <p class="pub-status">Working Paper, July 2026</p>
+      <p class="pub-abstract">We examine how investors expected stablecoin regulation to reshape competition within the banking sector as the perceived probability of passage of the 2025 GENIUS Act&mdash;the first comprehensive federal framework for payment stablecoins in the United States&mdash;evolved. Combining bank stock returns with daily prediction-market probabilities from Polymarket, we find that banks with greater pre-existing digital-asset exposure experienced more favorable valuation effects, whereas banks with greater commercial real estate (CRE) loan concentrations experienced less favorable valuation effects. These results suggest that markets expected regulatory clarity to increase the value of existing digital-asset capabilities relative to traditional lending-oriented business models.</p>
+      <p class="pub-links"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7135658" target="_blank" rel="noopener">SSRN</a></p>
+    </li>
+  </ol>
+</section>
