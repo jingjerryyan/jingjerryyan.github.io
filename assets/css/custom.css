@@ -1343,27 +1343,35 @@ body:has(.hero--full) .greedy-nav .visible-links a, body:has(.hero--full) .masth
 .hero .hero__card-cjk { margin-bottom: 0.5rem !important; }
 .hero .hero__card-meta { padding-top: 0.6rem !important; }
 
-/* ===== Mobile hero layout fix (<=820px) ===== */
+/* ===== Mobile fixes (<=820px) ===== */
 @media (max-width: 820px) {
-  /* Override the un-scoped desktop two-column grid that leaks into mobile */
+  /* 1) Force hero into a single column (overrides the !important desktop grid) */
   .hero--full .hero__body,
   .hero--full.hero--profile .hero__body {
     grid-template-columns: 1fr !important;
   }
 
-  /* Prevent the fixed-width background canvas/aurora from overflowing
-     and forcing the browser into shrink-to-fit zoom */
-  html,
-  body {
-    overflow-x: hidden;
-    max-width: 100%;
-  }
-  .hero__canvas,
-  .site-bg__canvas,
+  /* 2) Stop the background canvas/aurora from overflowing and zooming the page */
+  .hero { overflow: hidden; }
   .hero__aurora,
   .site-bg__aurora {
+    transform: none !important;
     max-width: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
   }
+  .hero__canvas,
+  .site-bg__canvas { max-width: 100% !important; }
+  html, body { overflow-x: hidden; max-width: 100%; }
+
+  /* 3) Make the top nav wrap instead of overflowing off-screen */
+  .greedy-nav .visible-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center;
+    row-gap: 0.25rem;
+  }
+  .greedy-nav .visible-links li {
+    display: inline-flex !important;
+    vertical-align: middle;
+  }
+  .greedy-nav { min-width: 0 !important; }
 }
