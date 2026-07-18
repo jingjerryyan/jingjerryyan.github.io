@@ -1450,3 +1450,14 @@ body:has(.hero--full) .hero--full {
    padding-right: 0 !important;
 }
 }
+
+
+/* ============================================================
+Fix: vertically center the masthead nav row (title + links).
+The inner-wrap had asymmetric padding (more on top than bottom),
+so 'Jing Yan' and the menu sat ~4px below the bar's true middle.
+============================================================ */
+.masthead__inner-wrap {
+   padding-top: 0.65em !important;
+   padding-bottom: 0.65em !important;
+}
