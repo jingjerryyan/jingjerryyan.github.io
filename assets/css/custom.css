@@ -565,11 +565,11 @@ body:has(.hero--full) .page__title { display: none !important; }
 .hero__topnav a:hover { color: #fff !important; }
 .hero__topnav a::after {
   content: "";
-  position: absolute; left: 0; right: 100%; bottom: 0; height: 1px;
+  position: absolute; left: 50%; right: 50%; bottom: 0; height: 1px;
   background: var(--accent-soft);
-  transition: right 0.3s ease;
+  transition: left 0.3s ease, right 0.3s ease;
 }
-.hero__topnav a:hover::after { right: 0; }
+.hero__topnav a:hover::after { left: 0; right: 0; }
 
 /* ---- Two-column body: profile card + main text ---- */
 .hero__body {
