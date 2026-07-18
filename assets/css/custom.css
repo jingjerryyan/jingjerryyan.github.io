@@ -1342,3 +1342,28 @@ body:has(.hero--full) .greedy-nav .visible-links a, body:has(.hero--full) .masth
    ============================================================ */
 .hero .hero__card-cjk { margin-bottom: 0.5rem !important; }
 .hero .hero__card-meta { padding-top: 0.6rem !important; }
+
+/* ===== Mobile hero layout fix (<=820px) ===== */
+@media (max-width: 820px) {
+  /* Override the un-scoped desktop two-column grid that leaks into mobile */
+  .hero--full .hero__body,
+  .hero--full.hero--profile .hero__body {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Prevent the fixed-width background canvas/aurora from overflowing
+     and forcing the browser into shrink-to-fit zoom */
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  .hero__canvas,
+  .site-bg__canvas,
+  .hero__aurora,
+  .site-bg__aurora {
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
