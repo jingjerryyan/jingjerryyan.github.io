@@ -385,15 +385,17 @@ hr { border-color: var(--line) !important; }
 .greedy-nav .visible-links a:before {
   content: "";
   position: absolute;
-  left: 50%;
-  right: 50%;
+  left: 0;
+  right: auto;
+  width: 100%;
   bottom: 0.05em;
   height: 1px !important;
   background: var(--accent) !important;
-  transform: none !important;
-  transition: left 0.3s ease, right 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: 50% 50%;
+  transition: transform 0.3s ease;
 }
-.greedy-nav .visible-links a:hover:before { left: 0.15em; right: 0.15em; }
+.greedy-nav .visible-links a:hover:before { transform: scaleX(1); }
 .site-title, .masthead .site-title {
   letter-spacing: 0.08em !important;
   font-weight: 700 !important;
