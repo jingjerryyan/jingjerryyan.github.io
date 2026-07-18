@@ -1403,3 +1403,40 @@ body:has(.hero--full) .greedy-nav .visible-links a, body:has(.hero--full) .masth
   }
   .greedy-nav .visible-links .tail { display: none !important; }
 }
+
+
+/* ============================================================
+Fix: unlock hero height & allow scrolling (desktop + mobile).
+Previously the hero was pinned to 100vh with overflow:hidden and
+the body could not scroll, so any content taller than one screen
+(esp. the stacked mobile layout) was clipped and unreachable.
+============================================================ */
+body:has(.hero--full),
+body:has(.hero--full) #main,
+body:has(.hero--full) .hero--full {
+   height: auto !important;
+   overflow: visible !important;
+}
+.hero--full {
+   min-height: 100vh;
+   overflow: visible !important;
+}
+
+@media (max-width: 820px) {
+   body:has(.hero--full),
+   body:has(.hero--full) #main,
+   body:has(.hero--full) .hero--full {
+      height: auto !important;
+      min-height: 100vh;
+      overflow: visible !important;
+   }
+   .hero--full { overflow: visible !important; }
+
+/* Fix: truly center the "Jing Yan" site title in the mobile nav.
+   The global ".greedy-nav a { margin: 0 1rem }" was shifting it. */
+.greedy-nav .visible-links .masthead__menu-item--lg a {
+   margin: 0 !important;
+   width: 100%;
+   text-align: center;
+}
+}
