@@ -1461,3 +1461,18 @@ so 'Jing Yan' and the menu sat ~4px below the bar's true middle.
    padding-top: 0.65em !important;
    padding-bottom: 0.65em !important;
 }
+
+
+/* ============================================================
+De-emphasize the page title so it reads as a quiet page anchor
+(a "kicker"/eyebrow) that sits clearly below the in-page section
+headings, instead of competing with them. Applies site-wide.
+============================================================ */
+.page__title {
+   font-size: 1.35rem !important;
+   font-weight: 500 !important;
+   color: var(--muted) !important;
+   letter-spacing: 0.6px;
+   text-transform: uppercase;
+   margin-bottom: 1.6rem !important;
+}
