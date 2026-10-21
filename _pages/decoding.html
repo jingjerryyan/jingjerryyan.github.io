@@ -18,29 +18,17 @@ author_profile: false
         
         <!-- 闫 (Yán) Surname -->
         <div class="name-card">
-            <div class="chinese-character">
-                <img src="/images/yan.png" alt="闫">
-            </div>
             <div class="name-content">
-                <h2>闫 (Yán) surname</h2>
-                <ul class="name-details">
-                    <li><strong>Pronunciation:</strong> <em>yán</em><button type="button" class="say" aria-label="Play pronunciation" onclick="var b=this,a=new Audio('/files/yan.mp3');b.classList.add('is-playing');a.onended=a.onerror=function(){b.classList.remove('is-playing')};a.play()"><i class="fas fa-volume-high" aria-hidden="true"></i></button>&nbsp;– like "yen", with a rising tone</li>
-                    <li><strong>Meaning:</strong> the gate of a village lane</li>
-                </ul>
+                <h2><span class="glyph" lang="zh">闫</span> Yán <span class="role">surname</span></h2>
+                <p class="name-desc">Pronounced <em>yán</em><button type="button" class="say" aria-label="Hear 闫 pronounced" onclick="var b=this,a=new Audio('/files/yan.mp3');b.classList.add('is-playing');a.onended=a.onerror=function(){b.classList.remove('is-playing')};a.play()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="w1" d="M15.5 9.2a4 4 0 0 1 0 5.6"/><path class="w2" d="M18.6 6.4a8 8 0 0 1 0 11.2"/></svg></button> with a rising tone, like &ldquo;yen.&rdquo; The character began as the word for the gate of a village lane &mdash; you can still see the 门 (gate) framing it &mdash; and today it lives on almost only as a family name, written 閆 in traditional script.</p>
             </div>
         </div>
 
         <!-- 璟 (Jǐng) First Name -->
         <div class="name-card">
-            <div class="chinese-character">
-                <img src="/images/jing.png" alt="璟">
-            </div>
             <div class="name-content">
-                <h2>璟 (Jǐng) first name</h2>
-                <ul class="name-details">
-                    <li><strong>Pronunciation:</strong> <em>jǐng</em><button type="button" class="say" aria-label="Play pronunciation" onclick="var b=this,a=new Audio('/files/jing.mp3');b.classList.add('is-playing');a.onended=a.onerror=function(){b.classList.remove('is-playing')};a.play()"><i class="fas fa-volume-high" aria-hidden="true"></i></button>&nbsp;– like "jing", with a dipping tone (falls, then rises)</li>
-                    <li><strong>Meaning:</strong> the radiance of jade</li>
-                </ul>
+                <h2><span class="glyph" lang="zh">璟</span> Jǐng <span class="role">given name</span></h2>
+                <p class="name-desc">Pronounced <em>jǐng</em><button type="button" class="say" aria-label="Hear 璟 pronounced" onclick="var b=this,a=new Audio('/files/jing.mp3');b.classList.add('is-playing');a.onended=a.onerror=function(){b.classList.remove('is-playing')};a.play()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="w1" d="M15.5 9.2a4 4 0 0 1 0 5.6"/><path class="w2" d="M18.6 6.4a8 8 0 0 1 0 11.2"/></svg></button> with a dipping tone &mdash; the voice falls, then rises. 璟 means the luster of jade: the jade radical 王 sits beside 景, &ldquo;bright light,&rdquo; which also gives the character its sound. It is a literary character, chosen for names to wish someone a quiet, lasting brilliance.</p>
             </div>
         </div>
     </section>
@@ -106,6 +94,37 @@ author_profile: false
 
 .name-content {
     flex-grow: 1;
+}
+
+.name-content h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+}
+
+.glyph {
+    font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    font-size: 2.4rem;
+    line-height: 1;
+}
+
+.role {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8c8477;
+}
+
+.name-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.name-desc em {
+    font-style: italic;
+    color: #7b2230;
 }
 
 .name-content h2 {
