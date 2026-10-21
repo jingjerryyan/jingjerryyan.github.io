@@ -1485,3 +1485,54 @@ headings, instead of competing with them. Applies site-wide.
 body:has(.site-bg__canvas):not(:has(.hero--full)) .page__title {
    display: none !important;
 }
+
+/* ============================================================
+   Name pronunciation button — thin ring, inherits text colour
+   ============================================================ */
+.say {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7em;
+  height: 1.7em;
+  margin: 0 0.15em 0 0.5em;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 0.72em;
+  line-height: 1;
+  letter-spacing: 0;
+  vertical-align: 0.2em;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+.say i { font-size: 0.85em; }
+.say:hover,
+.say:focus-visible,
+.say.is-playing {
+  opacity: 1;
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
+}
+.say:active { transform: scale(0.94); }
+.say:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; }
+.say.is-playing::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  animation: say-ripple 1.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes say-ripple {
+  from { transform: scale(1);   opacity: 0.55; }
+  to   { transform: scale(1.8); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .say.is-playing::after { animation: none; }
+}
+.name-details .say { color: var(--accent, #7b2230); font-size: 0.8em; }
