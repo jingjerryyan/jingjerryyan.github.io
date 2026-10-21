@@ -1488,8 +1488,7 @@ body:has(.site-bg__canvas):not(:has(.hero--full)) .page__title {
 
 /* ============================================================
    Name pronunciation button
-   - homepage: bare icon
-   - decoding page: icon in a thin ring
+   - homepage and decoding page: icon in a thin ring
    ============================================================ */
 .say {
   position: relative;
@@ -1515,7 +1514,8 @@ body:has(.site-bg__canvas):not(:has(.hero--full)) .page__title {
   50%      { opacity: 0.35; }
 }
 
-.name-desc .say {
+.name-desc .say,
+.hero__card-cjk .say {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1530,15 +1530,22 @@ body:has(.site-bg__canvas):not(:has(.hero--full)) .page__title {
   vertical-align: 0.15em;
   opacity: 0.6;
 }
-.name-desc .say i { font-size: 0.85em; }
+.name-desc .say i,
+.hero__card-cjk .say i { font-size: 0.85em; }
+.hero__card-cjk .say { color: inherit; }
 .name-desc .say:hover,
 .name-desc .say:focus-visible,
-.name-desc .say.is-playing {
+.name-desc .say.is-playing,
+.hero__card-cjk .say:hover,
+.hero__card-cjk .say:focus-visible,
+.hero__card-cjk .say.is-playing {
   opacity: 1;
   background-color: color-mix(in srgb, currentColor 10%, transparent);
 }
-.name-desc .say.is-playing i { animation: none; }
-.name-desc .say.is-playing::after {
+.name-desc .say.is-playing i,
+.hero__card-cjk .say.is-playing i { animation: none; }
+.name-desc .say.is-playing::after,
+.hero__card-cjk .say.is-playing::after {
   content: "";
   position: absolute;
   inset: -1px;
@@ -1552,5 +1559,5 @@ body:has(.site-bg__canvas):not(:has(.hero--full)) .page__title {
   to   { transform: scale(1.8); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .say.is-playing i, .name-desc .say.is-playing::after { animation: none; }
+  .say.is-playing i, .say.is-playing::after { animation: none; }
 }
