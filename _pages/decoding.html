@@ -178,6 +178,24 @@ author_profile: false
     font-style: italic;
 }
 
+/* Entrance: card contents rise in after the card fades up */
+.name-card.is-visible .name-content > * {
+    animation: name-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.15s;
+}
+.name-card.is-visible .name-content > p { animation-delay: 0.3s; }
+.name-card + .name-card.is-visible .name-content > * { animation-delay: 0.35s; }
+.name-card + .name-card.is-visible .name-content > p { animation-delay: 0.5s; }
+
+@keyframes name-rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .name-card .name-content > * { animation: none !important; }
+}
+
 /* My Story Section */
 .story-section {
     margin-top: 3rem;
