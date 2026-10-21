@@ -25,7 +25,7 @@ redirect_from:
       <aside class="hero__card">
         <img class="hero__avatar" src="/images/profile.png" alt="Jing Yan" />
         <h2 class="hero__card-name">Jing Yan</h2>
-        <p class="hero__card-cjk">闫璟 &middot; 閆璟<button type="button" class="say" aria-label="Hear my name" onclick="var b=this,a=new Audio('/files/yanjing.mp3');b.classList.add('is-playing');a.onended=a.onerror=function(){b.classList.remove('is-playing')};a.play()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="w1" d="M15.5 9.2a4 4 0 0 1 0 5.6"/><path class="w2" d="M18.6 6.4a8 8 0 0 1 0 11.2"/></svg></button></p>
+        <p class="hero__card-cjk">闫璟 &middot; 閆璟<button type="button" class="say" aria-label="Hear my name" onclick="var b=this,a=new Audio('/files/yanjing.mp3');b.classList.add('is-playing');a.onended=a.onerror=function(){b.classList.remove('is-playing')};a.play()"><i class="fas fa-volume-high" aria-hidden="true"></i></button></p>
         <ul class="hero__card-meta">
           <li><i class="fas fa-fw fa-location-dot" aria-hidden="true"></i><a href="https://maps.app.goo.gl/YotxriCCWCpzb8xa8" target="_blank" rel="noopener">Philadelphia, PA</a></li>
           <li><i class="fas fa-fw fa-envelope" aria-hidden="true"></i><a href="mailto:jing.yan0001@temple.edu">Email</a></li>
