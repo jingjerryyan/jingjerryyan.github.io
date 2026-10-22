@@ -17,6 +17,7 @@ redirect_from:
       <a href="/">Home</a>
       <a href="/research/">Research</a>
       <a href="/cv-json/">C.V.</a>
+      <a href="/discussions/">Discussions</a>
       <a href="/teaching/">Teaching</a>
     </nav>
 
