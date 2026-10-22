@@ -11,6 +11,9 @@ main:
   - title: "C.V."
     url: /cv-json/
 
+  - title: "Discussions"
+    url: /discussions/
+
   - title: "Teaching"
     url: /teaching/
 
