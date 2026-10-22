@@ -1577,3 +1577,16 @@ body:has(.site-bg__canvas):not(:has(.hero--full)) .page__title {
   transform: translateY(-50%);
 }
 .hero__card-cjk .say:active { transform: translateY(-50%) scale(0.92); }
+
+/* Homepage: Chinese name links to the name page, quietly */
+.hero__card-cjk-link,
+.hero__card-cjk-link:visited {
+  color: inherit !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+.hero__card-cjk-link:hover,
+.hero__card-cjk-link:focus-visible {
+  border-bottom-color: currentColor;
+}
